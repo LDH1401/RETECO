@@ -1,22 +1,22 @@
 #!/usr/bin/env python3
-"""Remove duplicate documents from the Track 1 (TEMPO) corpora without losing gold.
+"""Loại bỏ tài liệu trùng lặp khỏi kho ngữ liệu Hạng mục 1 (TEMPO) mà không làm mất dữ liệu chuẩn.
 
-Two documents are duplicates when their text is identical after collapsing
-whitespace. Near-duplicates are deliberately kept: in a temporal task, pages
-that differ only in a date or version number are different evidence.
+Hai tài liệu được coi là trùng lặp khi văn bản của chúng giống hệt nhau sau khi gộp các
+khoảng trắng. Các bản gần trùng lặp được cố ý giữ lại: trong một nhiệm vụ về thời gian, các trang
+chỉ khác nhau ở một ngày tháng hoặc số phiên bản là những bằng chứng khác nhau.
 
-For each group of duplicates one ID is kept:
-  1. an ID referenced by any task file (qrels, gold_ids, guidance) if the
-     group has one -- the smallest such ID when several are referenced;
-  2. otherwise the smallest ID in the group.
-Every other ID is removed from documents.jsonl and renamed to the kept ID
-wherever it appears in the task files. ID lists (gold_ids, qrels) that end up
-naming the same document twice are collapsed, keeping the first occurrence;
-guidance annotations are never dropped, so a record may then carry two
-annotations with the same doc_id. The removed ->
-kept mapping is written to <domain>/duplicate_map.json.
+Với mỗi nhóm trùng lặp, một ID được giữ lại:
+  1. một ID được tham chiếu bởi bất kỳ tệp nhiệm vụ nào (qrels, gold_ids, guidance) nếu
+     nhóm có ID như vậy -- ID nhỏ nhất trong số đó khi có nhiều ID được tham chiếu;
+  2. nếu không, ID nhỏ nhất trong nhóm.
+Mọi ID khác bị xóa khỏi documents.jsonl và được đổi tên thành ID được giữ lại
+ở bất cứ đâu chúng xuất hiện trong các tệp nhiệm vụ. Các danh sách ID (gold_ids, qrels) mà sau đó
+nêu cùng một tài liệu hai lần sẽ được gộp lại, giữ lần xuất hiện đầu tiên;
+các chú thích guidance không bao giờ bị bỏ, nên khi đó một bản ghi có thể mang hai
+chú thích có cùng doc_id. Bảng ánh xạ ID bị loại bỏ ->
+ID được giữ lại được ghi vào <domain>/duplicate_map.json.
 
-Track 2 is copied unchanged.
+Hạng mục 2 được sao chép nguyên vẹn.
 
     python dedup_track1.py --src reteco_data --dst reteco_data_v1.1
 """
@@ -63,7 +63,7 @@ def collect_ids(obj, corpus_ids, out):
 
 
 def remap(obj, id_map, stats):
-    """Rename removed IDs; collapse lists that now name a document twice."""
+    """Đổi tên các ID bị loại bỏ; gộp các danh sách giờ đây nêu cùng một tài liệu hai lần."""
     if isinstance(obj, str):
         if obj in id_map:
             stats["id_refs_renamed"] += 1
@@ -75,8 +75,8 @@ def remap(obj, id_map, stats):
         items = [remap(x, id_map, stats) for x in obj]
         out, seen = [], set()
         for x in items:
-            # only plain ID lists (gold_ids) are collapsed; annotation records
-            # are all kept even when two now name the same document
+            # chỉ các danh sách ID thuần (gold_ids) mới được gộp; các bản ghi chú thích
+            # đều được giữ lại kể cả khi hai bản ghi giờ đây nêu cùng một tài liệu
             if isinstance(x, str) and x in id_map.values_set:
                 if x in seen:
                     stats["list_items_collapsed"] += 1
@@ -88,7 +88,7 @@ def remap(obj, id_map, stats):
 
 
 class IdMap(dict):
-    """removed_id -> kept_id, plus the set of all corpus IDs (for list collapsing)."""
+    """removed_id -> kept_id, kèm tập tất cả ID của kho ngữ liệu (dùng để gộp danh sách)."""
     values_set = frozenset()
 
 
@@ -97,7 +97,7 @@ def dedup_domain(args):
     sdir, ddir = os.path.join(src, dom), os.path.join(dst, dom)
     os.makedirs(ddir, exist_ok=True)
 
-    # pass 1: corpus IDs and text keys, in file order
+    # lượt 1: ID của kho ngữ liệu và khóa văn bản, theo thứ tự trong tệp
     ids, keys = [], []
     with open(os.path.join(sdir, "documents.jsonl"), encoding="utf-8") as f:
         for ln in f:
@@ -108,7 +108,7 @@ def dedup_domain(args):
     corpus_ids = set(ids)
     assert len(corpus_ids) == len(ids), f"{dom}: duplicate IDs in corpus"
 
-    # every ID referenced by any task file is protected
+    # mọi ID được tham chiếu bởi bất kỳ tệp nhiệm vụ nào đều được bảo vệ
     task = {}
     referenced = set()
     for name in JSONL_FILES:
@@ -129,7 +129,7 @@ def dedup_domain(args):
     missing = referenced - corpus_ids
     assert not missing, f"{dom}: referenced IDs absent from corpus: {sorted(missing)[:5]}"
 
-    # choose one ID per group
+    # chọn một ID cho mỗi nhóm
     groups = defaultdict(list)
     for i, k in zip(ids, keys):
         groups[k].append(i)
@@ -144,7 +144,7 @@ def dedup_domain(args):
                 id_map[m] = keep
     id_map.values_set = frozenset(corpus_ids)
 
-    # pass 2: write kept documents, original lines byte-for-byte
+    # lượt 2: ghi các tài liệu được giữ lại, giữ nguyên từng byte của dòng gốc
     kept = 0
     with open(os.path.join(sdir, "documents.jsonl"), encoding="utf-8") as fin, \
          open(os.path.join(ddir, "documents.jsonl"), "w", encoding="utf-8") as fout:

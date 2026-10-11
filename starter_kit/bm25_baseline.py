@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
-"""RETECO BM25 starter baseline -- produces a TREC run file for one domain.
+"""Hệ thống cơ sở khởi đầu BM25 của RETECO -- tạo một tệp kết quả chạy TREC cho một lĩnh vực.
 
-TRACK 1 (per query, and per step for Sub-Track 1b):
+HẠNG MỤC 1 (theo truy vấn, và theo bước cho Hạng mục con 1b):
     python bm25_baseline.py --track 1 \
         --corpus documents.jsonl --queries examples.jsonl --out run.txt
-    # step-level run for Sub-Track 1b:
+    # kết quả chạy cấp bước cho Hạng mục con 1b:
     python bm25_baseline.py --track 1 --level step \
         --corpus documents.jsonl --queries steps.jsonl --out run_steps.txt
 
-TRACK 2 (per turn; --strategy chooses how conversation context enters the query):
+HẠNG MỤC 2 (theo lượt; --strategy chọn cách đưa ngữ cảnh hội thoại vào truy vấn):
     python bm25_baseline.py --track 2 --strategy current \
         --corpus earthscience_documents.jsonl --queries earthscience_benchmark.json --out run.txt
-    python bm25_baseline.py --track 2 --strategy history ...   # prepend conversation history
+    python bm25_baseline.py --track 2 --strategy history ...   # thêm lịch sử hội thoại vào trước truy vấn
 
-Output:  qid  Q0  docid  rank  score  bm25
+Đầu ra:  qid  Q0  docid  rank  score  bm25
 """
 import argparse
 import json
@@ -41,8 +41,8 @@ def write_run(out, rows, tag="bm25"):
 def track1_queries(path, level):
     items = read_jsonl(path)
     if level == "step":
-        # steps_*.jsonl holds one record per query with its steps nested.
-        # Official TEMPO run_step.py format: base query, blank line, "Step: <text>"
+        # steps_*.jsonl chứa một bản ghi cho mỗi truy vấn, với các bước lồng bên trong.
+        # Định dạng chính thức của run_step.py (TEMPO): truy vấn gốc, một dòng trống, "Step: <text>"
         return [(st["step_id"],
                  f'{it["query"]}\n\nStep: {st.get("step_instruction", "")}')
                 for it in items for st in it.get("steps", [])]

@@ -1,7 +1,7 @@
-"""Pure-Python BM25 (Okapi) ranker -- no external dependencies.
+"""Bộ xếp hạng BM25 (Okapi) thuần Python -- không có phụ thuộc bên ngoài.
 
-Used as the RETECO starter baseline. Defaults (k1=0.9, b=0.4) follow common
-BEIR practice for zero-shot retrieval; override on the CLI if desired.
+Được dùng làm hệ thống cơ sở khởi đầu của RETECO. Giá trị mặc định (k1=0.9, b=0.4) theo
+thông lệ phổ biến của BEIR cho truy xuất zero-shot; có thể ghi đè qua CLI nếu muốn.
 """
 import re
 from math import log
@@ -21,7 +21,7 @@ class BM25:
         self.N = len(self.docs)
         self.doc_len = [len(d) for d in self.docs]
         self.avgdl = (sum(self.doc_len) / self.N) if self.N else 0.0
-        # document frequencies + per-doc term frequencies
+        # tần suất tài liệu + tần suất từ theo từng tài liệu
         self.tf = []
         df = {}
         for d in self.docs:
@@ -31,7 +31,7 @@ class BM25:
             self.tf.append(counts)
             for w in counts:
                 df[w] = df.get(w, 0) + 1
-        # BM25+ style idf (non-negative)
+        # idf kiểu BM25+ (không âm)
         self.idf = {w: log(1 + (self.N - n + 0.5) / (n + 0.5)) for w, n in df.items()}
 
     def _score(self, q_terms, i):
@@ -46,7 +46,7 @@ class BM25:
         return score
 
     def search(self, query, top_k=100):
-        """Return [(doc_id, score), ...] sorted by score desc (stable)."""
+        """Trả về [(doc_id, score), ...] sắp xếp theo score giảm dần (ổn định)."""
         q = tokenize(query)
         scored = [(self.doc_ids[i], self._score(q, i)) for i in range(self.N)]
         scored.sort(key=lambda x: (-x[1], x[0]))

@@ -22,163 +22,163 @@ size_categories:
 
 # RETECO
 
-## Training &amp; Development Data · SemEval-2027 Task 1
+## Dữ liệu huấn luyện &amp; phát triển · Nhiệm vụ 1 của SemEval-2027
 
-Retrieval that must reason about **when** evidence applies<br>
-and **what the conversation has already established**.
+Truy xuất cần suy luận về **thời điểm** bằng chứng còn áp dụng<br>
+và **những gì cuộc hội thoại đã xác lập**.
 
-[![Task website](https://img.shields.io/badge/Task%20Website-Live-1f6feb?style=for-the-badge)](https://datascienceuibk.github.io/RETECO/)
-[![Starter kit](https://img.shields.io/badge/Starter%20Kit-GitHub-07101d?style=for-the-badge&logo=github)](https://github.com/DataScienceUIBK/RETECO/tree/main/starter_kit)
-[![SemEval-2027](https://img.shields.io/badge/SemEval--2027-Task%201-5dd9ff?style=for-the-badge)](https://semeval.github.io/SemEval2027/)
+[![Trang web nhiệm vụ](https://img.shields.io/badge/Trang%20web%20nhi%E1%BB%87m%20v%E1%BB%A5-%C4%90ang%20ho%E1%BA%A1t%20%C4%91%E1%BB%99ng-1f6feb?style=for-the-badge)](https://datascienceuibk.github.io/RETECO/)
+[![Bộ công cụ khởi đầu](https://img.shields.io/badge/B%E1%BB%99%20c%C3%B4ng%20c%E1%BB%A5%20kh%E1%BB%9Fi%20%C4%91%E1%BA%A7u-GitHub-07101d?style=for-the-badge&logo=github)](https://github.com/DataScienceUIBK/RETECO/tree/main/starter_kit)
+[![SemEval-2027](https://img.shields.io/badge/SemEval--2027-Nhi%E1%BB%87m%20v%E1%BB%A5%201-5dd9ff?style=for-the-badge)](https://semeval.github.io/SemEval2027/)
 
-![Domains](https://img.shields.io/badge/domains-24-informational?style=flat-square)
-![Documents](https://img.shields.io/badge/documents-1.67M-informational?style=flat-square)
-![Split](https://img.shields.io/badge/train%2Fdev-70%2F30-informational?style=flat-square)
-![Size](https://img.shields.io/badge/size-3.2%20GB-informational?style=flat-square)
-![Language](https://img.shields.io/badge/language-English-informational?style=flat-square)
+![Lĩnh vực](https://img.shields.io/badge/l%C4%A9nh%20v%E1%BB%B1c-24-informational?style=flat-square)
+![Tài liệu](https://img.shields.io/badge/t%C3%A0i%20li%E1%BB%87u-1.67M-informational?style=flat-square)
+![Cách chia](https://img.shields.io/badge/train%2Fdev-70%2F30-informational?style=flat-square)
+![Dung lượng](https://img.shields.io/badge/dung%20l%C6%B0%E1%BB%A3ng-3.2%20GB-informational?style=flat-square)
+![Ngôn ngữ](https://img.shields.io/badge/ng%C3%B4n%20ng%E1%BB%AF-ti%E1%BA%BFng%20Anh-informational?style=flat-square)
 
-**[📋 Task](https://datascienceuibk.github.io/RETECO/task.html)** ·
-**[📊 Data](https://datascienceuibk.github.io/RETECO/data.html)** ·
-**[📐 Evaluation](https://datascienceuibk.github.io/RETECO/evaluation.html)** ·
-**[🚀 Participate](https://datascienceuibk.github.io/RETECO/participate.html)** ·
-**[🧰 Starter kit](https://github.com/DataScienceUIBK/RETECO/tree/main/starter_kit)**
+**[📋 Nhiệm vụ](https://datascienceuibk.github.io/RETECO/task.html)** ·
+**[📊 Dữ liệu](https://datascienceuibk.github.io/RETECO/data.html)** ·
+**[📐 Đánh giá](https://datascienceuibk.github.io/RETECO/evaluation.html)** ·
+**[🚀 Tham gia](https://datascienceuibk.github.io/RETECO/participate.html)** ·
+**[🧰 Bộ công cụ khởi đầu](https://github.com/DataScienceUIBK/RETECO/tree/main/starter_kit)**
 
 </div>
 
 ---
 
-## 🎯 At a glance
+## 🎯 Tổng quan nhanh
 
 | | |
 | :--- | :--- |
-| **What** | Official training and development data for RETECO, the SemEval-2027 shared task on reasoning-oriented retrieval |
-| **Scope** | 2 tracks · 5 sub-tracks · 24 self-contained domains |
-| **Scale** | 1,674,300 documents · 1,730 temporal queries · 3,976 steps · 707 conversations · 2,971 turns |
-| **Splits** | 70 / 30 train / dev per domain · fixed seed · gold judgments for both |
-| **Metric** | nDCG@10 via `pytrec_eval` |
-| **Licence** | Text CC BY-SA 4.0 · RETECO annotations CC BY 4.0 |
-| **Contact** | [abdelrahman.abdallah@uibk.ac.at](mailto:abdelrahman.abdallah@uibk.ac.at) |
+| **Là gì** | Dữ liệu huấn luyện và phát triển chính thức của RETECO, nhiệm vụ chung SemEval-2027 về truy xuất định hướng suy luận |
+| **Phạm vi** | 2 hạng mục · 5 hạng mục con · 24 lĩnh vực độc lập, tự chứa đầy đủ |
+| **Quy mô** | 1,674,300 tài liệu · 1,730 truy vấn thời gian · 3,976 bước · 707 hội thoại · 2,971 lượt |
+| **Cách chia** | 70 / 30 train / dev cho mỗi lĩnh vực · seed cố định · nhãn đánh giá chuẩn cho cả hai tập |
+| **Chỉ số** | nDCG@10 qua `pytrec_eval` |
+| **Giấy phép** | Văn bản: CC BY-SA 4.0 · Chú thích của RETECO: CC BY 4.0 |
+| **Liên hệ** | [abdelrahman.abdallah@uibk.ac.at](mailto:abdelrahman.abdallah@uibk.ac.at) |
 
-> ⚠️ **This is not the SemEval test set.** Train and dev only. Final scoring uses a
-> separate, never-publicly-released test set with private gold judgments.
-
----
-
-## 🆕 v1.1 · Track 1 corpora deduplicated
-
-The Track 1 corpora inherited many exact duplicates from upstream TEMPO: the same
-web text stored under several IDs (licence headers, disclaimers, and the same page
-section saved once for every query that retrieved it). v1.1 keeps one copy of each text.
-
-- **Track 1: 1,654,055 → 1,167,159 documents** (486,896 duplicates removed, 29.4%).
-  Largest reductions: bitcoin 50%, cardano 46%, history 44%, monero 37%.
-- **No gold text is lost.** When a group of copies contains a gold document, the gold
-  ID is the one kept. Where two gold IDs held the same text, 92 IDs are merged into
-  one; the 57 qrels lines that listed the same text twice for one query or step are merged too.
-  Guidance annotations are all kept, so 36 guidance records now hold more than one
-  annotation for the same `doc_id` (53 extra annotations in total).
-- **Only identical texts are merged.** Differences in whitespace (spaces, line
-  breaks, blank lines) are ignored; any other difference, even only in punctuation
-  or formatting, keeps documents separate, so no date, number or version is ever
-  merged away.
-- **Every removed ID maps to the kept ID** in `track1_tempo/<domain>/duplicate_map.json`.
-  To score a run made on v1.0, replace each document ID through the map and drop
-  repeated IDs within a ranking.
-- **Unchanged:** queries, steps, splits, topic IDs and all of Track 2.
-- v1.0 stays available: `hf download DataScience-UIBK/RETECO-SemEval2027 --repo-type dataset --revision v1.0`.
+> ⚠️ **Đây không phải tập kiểm tra SemEval.** Chỉ gồm train và dev. Việc chấm điểm cuối cùng dùng một
+> tập kiểm tra riêng, chưa từng được công bố công khai, với nhãn đánh giá chuẩn được giữ kín.
 
 ---
 
-## 📦 What is in here
+## 🆕 v1.1 · Loại bỏ trùng lặp trong kho ngữ liệu Hạng mục 1
 
-Two tracks, 24 independent domains, each domain self-contained with its own
-retrieval corpus. Nothing needs to be fetched from anywhere else.
+Kho ngữ liệu Hạng mục 1 kế thừa nhiều bản trùng lặp chính xác từ TEMPO gốc: cùng một
+văn bản web được lưu dưới nhiều ID (phần đầu ghi giấy phép, tuyên bố miễn trừ trách nhiệm, và cùng một phần
+của trang được lưu một lần cho mỗi truy vấn đã truy xuất nó). v1.1 giữ một bản cho mỗi văn bản.
 
-| | Domains | Corpus documents | Task items |
+- **Hạng mục 1: 1,654,055 → 1,167,159 tài liệu** (đã loại bỏ 486,896 bản trùng lặp, 29.4%).
+  Mức giảm lớn nhất: bitcoin 50%, cardano 46%, history 44%, monero 37%.
+- **Không mất văn bản chuẩn nào.** Khi một nhóm bản sao có chứa tài liệu chuẩn, ID chuẩn
+  là ID được giữ lại. Ở những chỗ hai ID chuẩn chứa cùng một văn bản, 92 ID được gộp
+  thành một; 57 dòng qrels liệt kê cùng một văn bản hai lần cho một truy vấn hoặc một bước cũng được gộp.
+  Mọi chú thích hướng dẫn (guidance) đều được giữ lại, nên 36 bản ghi guidance hiện có nhiều hơn một
+  chú thích cho cùng một `doc_id` (tổng cộng 53 chú thích dư ra).
+- **Chỉ gộp các văn bản giống hệt nhau.** Khác biệt về khoảng trắng (dấu cách, ngắt
+  dòng, dòng trống) được bỏ qua; mọi khác biệt khác, kể cả chỉ ở dấu câu
+  hay định dạng, đều khiến các tài liệu được giữ riêng, nên không có ngày tháng, con số hay phiên bản nào
+  bị gộp mất.
+- **Mọi ID bị loại bỏ đều được ánh xạ sang ID được giữ lại** trong `track1_tempo/<domain>/duplicate_map.json`.
+  Để chấm điểm một kết quả chạy tạo trên v1.0, hãy thay từng ID tài liệu theo bảng ánh xạ và bỏ
+  các ID lặp lại trong cùng một danh sách xếp hạng.
+- **Không thay đổi:** truy vấn, các bước, cách chia tập, ID chủ đề và toàn bộ Hạng mục 2.
+- v1.0 vẫn có sẵn: `hf download DataScience-UIBK/RETECO-SemEval2027 --repo-type dataset --revision v1.0`.
+
+---
+
+## 📦 Nội dung bộ dữ liệu
+
+Hai hạng mục, 24 lĩnh vực độc lập, mỗi lĩnh vực tự chứa đầy đủ với kho ngữ liệu
+truy xuất của riêng nó. Không cần lấy thêm gì từ nơi khác.
+
+| | Lĩnh vực | Tài liệu kho ngữ liệu | Mục nhiệm vụ |
 | --- | ---: | ---: | --- |
-| **Track 1 · Temporal Grounded Retrieval** | 13 | 1,167,159 | 1,730 queries · 3,976 steps |
-| **Track 2 · Conversational Retrieval** | 11 | 507,141 | 707 conversations · 2,971 turns |
+| **Hạng mục 1 · Truy xuất có căn cứ thời gian** | 13 | 1,167,159 | 1,730 truy vấn · 3,976 bước |
+| **Hạng mục 2 · Truy xuất hội thoại** | 11 | 507,141 | 707 hội thoại · 2,971 lượt |
 
-The five RETECO sub-tracks draw on this data as follows:
+Năm hạng mục con của RETECO sử dụng dữ liệu này như sau:
 
-| Sub-track | What you retrieve for | Files you need |
+| Hạng mục con | Bạn truy xuất cho | Tệp bạn cần |
 | --- | --- | --- |
-| **1a** Temporal retrieval | one whole temporal query | `examples_*.jsonl` + `qrels_*.txt` |
-| **1b** Step-wise retrieval | each decomposed step of a query | `steps_*.jsonl` + `qrels_steps_*.txt` |
-| **2a** Conversational retrieval | each target turn of a conversation | `benchmark_*.json` + `qrels_*.txt` |
-| **2b** Gold-passage generation | answer from supplied gold passages | `benchmark_*.json` |
-| **2c** Full conversational RAG | retrieve **and** answer per turn | `benchmark_*.json` + `qrels_*.txt` |
+| **1a** Truy xuất theo thời gian | toàn bộ một truy vấn thời gian | `examples_*.jsonl` + `qrels_*.txt` |
+| **1b** Truy xuất từng bước | từng bước phân rã của một truy vấn | `steps_*.jsonl` + `qrels_steps_*.txt` |
+| **2a** Truy xuất hội thoại | từng lượt mục tiêu của một hội thoại | `benchmark_*.json` + `qrels_*.txt` |
+| **2b** Sinh câu trả lời từ đoạn văn chuẩn | câu trả lời từ các đoạn văn chuẩn được cung cấp | `benchmark_*.json` |
+| **2c** RAG hội thoại đầy đủ | truy xuất **và** trả lời cho mỗi lượt | `benchmark_*.json` + `qrels_*.txt` |
 
 ---
 
-## ✂️ Splits: train / dev
+## ✂️ Cách chia tập: train / dev
 
-Every domain is split **70 / 30** with a fixed seed (`20270101`). The exact
-per-domain ID lists are in [`split_manifest.json`](split_manifest.json), so the
-split is fully reproducible and auditable.
+Mỗi lĩnh vực được chia theo tỷ lệ **70 / 30** với seed cố định (`20270101`). Danh sách ID
+chính xác theo từng lĩnh vực có trong [`split_manifest.json`](split_manifest.json), nên
+cách chia hoàn toàn có thể tái lập và kiểm tra.
 
-| | train | dev |
+| | Huấn luyện | Phát triển |
 | --- | ---: | ---: |
-| Track 1 queries | 1,211 | 519 |
-| Track 1 steps | 2,762 | 1,214 |
-| Track 2 conversations | 496 | 211 |
-| Track 2 turns | 2,113 | 858 |
+| Truy vấn Hạng mục 1 | 1,211 | 519 |
+| Bước Hạng mục 1 | 2,762 | 1,214 |
+| Hội thoại Hạng mục 2 | 496 | 211 |
+| Lượt Hạng mục 2 | 2,113 | 858 |
 
-Three rules define the split:
+Ba quy tắc xác định cách chia:
 
-1. **The corpus is never split.** `documents.jsonl` is the full domain corpus and
-   is shared by train and dev — retrieval always runs against all documents of
-   the domain, in both splits.
-2. **Track 1 splits on the query.** A query's decomposed steps are nested *inside*
-   its own record, so a step can never be separated from its query.
-3. **Track 2 splits on the whole conversation.** Every turn of a conversation is
-   in the same split, so no dialogue history leaks across the boundary.
+1. **Kho ngữ liệu không bao giờ bị chia.** `documents.jsonl` là toàn bộ kho ngữ liệu của lĩnh vực và
+   được dùng chung cho train và dev — việc truy xuất luôn chạy trên mọi tài liệu của
+   lĩnh vực, ở cả hai tập.
+2. **Hạng mục 1 chia theo truy vấn.** Các bước phân rã của một truy vấn nằm lồng *bên trong*
+   chính bản ghi của nó, nên một bước không bao giờ bị tách khỏi truy vấn của nó.
+3. **Hạng mục 2 chia theo toàn bộ cuộc hội thoại.** Mọi lượt của một hội thoại nằm
+   trong cùng một tập, nên không có lịch sử hội thoại nào bị rò rỉ qua ranh giới.
 
-Gold judgments are released for **both** splits. Use `train` to develop and
-tune; use `dev` as your held-out check. The hidden SemEval test set is separate.
+Nhãn đánh giá chuẩn được phát hành cho **cả hai** tập. Dùng `train` để phát triển và
+tinh chỉnh; dùng `dev` làm phép kiểm tra trên dữ liệu giữ lại. Tập kiểm tra ẩn của SemEval là riêng biệt.
 
 ---
 
-## 🗂️ Layout
+## 🗂️ Cấu trúc thư mục
 
 ```text
 track1_tempo/<domain>/
-  documents.jsonl              # full corpus, shared by both splits: {id, content}
-  duplicate_map.json           # v1.1: removed duplicate ID -> kept ID
+  documents.jsonl              # toàn bộ kho ngữ liệu, dùng chung cho cả hai tập: {id, content}
+  duplicate_map.json           # v1.1: ID trùng lặp bị loại bỏ -> ID được giữ lại
   examples_train.jsonl         # 1a: {id, query, gold_ids, gold_answers}
   examples_dev.jsonl
-  steps_train.jsonl            # 1b: one record per query, steps nested
+  steps_train.jsonl            # 1b: một bản ghi cho mỗi truy vấn, các bước lồng bên trong
   steps_dev.jsonl
-  guidance_train.jsonl         # temporal metadata + gold passage annotations
+  guidance_train.jsonl         # siêu dữ liệu thời gian + chú thích đoạn văn chuẩn
   guidance_dev.jsonl
-  qrels_train.txt              # 1a judgments  — TREC: qid 0 docid 1
+  qrels_train.txt              # nhãn đánh giá 1a — TREC: qid 0 docid 1
   qrels_dev.txt
-  qrels_steps_train.txt        # 1b judgments  — topic id = step_id
+  qrels_steps_train.txt        # nhãn đánh giá 1b — ID chủ đề = step_id
   qrels_steps_dev.txt
 
 track2_recor/<domain>/
-  documents.jsonl              # full corpus: {doc_id, content}
-  benchmark_train.json         # conversations: turns, history, gold_doc_ids
+  documents.jsonl              # toàn bộ kho ngữ liệu: {doc_id, content}
+  benchmark_train.json         # hội thoại: các lượt, lịch sử, gold_doc_ids
   benchmark_dev.json
-  qrels_train.txt              # 2a/2c judgments — qid = <conv_id>_turn_<turn_id>
+  qrels_train.txt              # nhãn đánh giá 2a/2c — qid = <conv_id>_turn_<turn_id>
   qrels_dev.txt
 
-split_manifest.json            # seed, per-domain counts, exact ID lists, provenance
+split_manifest.json            # seed, số lượng theo lĩnh vực, danh sách ID chính xác, nguồn gốc
 ```
 
-**Track 1 domains** — bitcoin, cardano, economics, genealogy, history, hsm, iota,
+**Các lĩnh vực của Hạng mục 1** — bitcoin, cardano, economics, genealogy, history, hsm, iota,
 law, monero, politics, quant, travel, workplace.
-**Track 2 domains** — biology, drones, earth_science, economics, hardware, law,
+**Các lĩnh vực của Hạng mục 2** — biology, drones, earth_science, economics, hardware, law,
 medicalsciences, politics, psychology, robotics, sustainable_living.
 
-### 📄 Record formats
+### 📄 Định dạng bản ghi
 
 ```jsonc
-// track1_tempo/<domain>/examples_{train,dev}.jsonl        — Sub-track 1a
+// track1_tempo/<domain>/examples_{train,dev}.jsonl        — Hạng mục con 1a
 {"id": "124973_5", "query": "How long does Bitcoin Core store forked chains? ...",
  "gold_ids": ["bitcoin/45eff6bd_1297.txt", ...], "gold_answers": ["..."]}
 
-// track1_tempo/<domain>/steps_{train,dev}.jsonl           — Sub-track 1b
+// track1_tempo/<domain>/steps_{train,dev}.jsonl           — Hạng mục con 1b
 {"id": "124973_5", "query": "How long does Bitcoin Core store forked chains? ...",
  "steps": [
    {"step_id": "124973_5_step1", "step": 1,
@@ -186,7 +186,7 @@ medicalsciences, politics, psychology, robotics, sustainable_living.
     "gold_ids": ["bitcoin/45eff6bd_1297.txt"]},
    {"step_id": "124973_5_step2", "step": 2, "...": "..."}]}
 
-// track2_recor/<domain>/benchmark_{train,dev}.json        — Sub-tracks 2a/2b/2c
+// track2_recor/<domain>/benchmark_{train,dev}.json        — Hạng mục con 2a/2b/2c
 {"id": "ex_3025", "task": "drones", "original_query": "...", "original_answer": "...",
  "turns": [
    {"turn_id": 1, "query": "In FPV drone motors, why is lubrication only ...",
@@ -194,19 +194,19 @@ medicalsciences, politics, psychology, robotics, sustainable_living.
     "subquestion_reasoning": "...", "gold_doc_ids": ["drones_ex_3025_doc_0", ...]}],
  "metadata": {"num_turns": 4, "gold_doc_count": 11, "source": "annotated_data"}}
 
-// qrels — TREC 4-column, binary relevance, tab-separated
+// qrels — TREC 4 cột, mức liên quan nhị phân, phân tách bằng tab
 124973_5        0       bitcoin/45eff6bd_1297.txt       1
 ex_3025_turn_1  0       drones_ex_3025_doc_0            1
 ```
 
-**Topic IDs** (use these exact forms in submissions):
+**ID chủ đề** (dùng chính xác các dạng này trong bài nộp):
 1a `id` · 1b `step_id` = `<query_id>_step<n>` · 2a/2c `<conversation_id>_turn_<turn_id>`
 
 ---
 
-## 🚀 How to use
+## 🚀 Cách sử dụng
 
-### 1️⃣ Download
+### 1️⃣ Tải xuống
 
 ```bash
 pip install huggingface_hub
@@ -214,47 +214,47 @@ hf download DataScience-UIBK/RETECO-SemEval2027 --repo-type dataset \
     --local-dir reteco_data
 ```
 
-### 2️⃣ Get the baselines
+### 2️⃣ Lấy các hệ thống cơ sở
 
 ```bash
 git clone https://github.com/DataScienceUIBK/RETECO.git
 cd RETECO/starter_kit
-pip install -r requirements.txt          # pytrec_eval, gensim, pyserini (needs a JDK)
+pip install -r requirements.txt          # pytrec_eval, gensim, pyserini (cần JDK)
 ```
 
-### 3️⃣ Run on **train**, then on **dev**
+### 3️⃣ Chạy trên **train**, sau đó trên **dev**
 
-The runner takes `--splits`, so train and dev are the same command with one word
-changed. Develop against `train`; keep `dev` as your held-out check.
+Script chạy nhận tham số `--splits`, nên train và dev là cùng một lệnh, chỉ khác một
+từ. Phát triển trên `train`; giữ `dev` làm phép kiểm tra trên dữ liệu giữ lại.
 
 ```bash
 export JAVA_HOME=/path/to/jdk
 export JVM_PATH=$JAVA_HOME/lib/server/libjvm.so
 
-# development split — tune here
+# tập dùng để phát triển (train) — tinh chỉnh ở đây
 python official_baseline.py --data ../../reteco_data --out ../../baselines \
     --splits train
 
-# held-out split — check here
+# tập giữ lại (dev) — kiểm tra ở đây
 python official_baseline.py --data ../../reteco_data --out ../../baselines \
     --splits dev
 
-# or both in one pass (corpus is indexed once and reused across splits)
+# hoặc cả hai trong một lượt (kho ngữ liệu được lập chỉ mục một lần và dùng lại cho các tập)
 python official_baseline.py --data ../../reteco_data --out ../../baselines \
     --splits train dev
 
-# one domain, for a fast smoke test
+# một lĩnh vực, để chạy thử nhanh (smoke test)
 python official_baseline.py --track1 iota --track2 drones --splits train dev
 ```
 
-Each run writes, per domain, a TREC run file `run_<subtrack>_<split>.trec` and a
-`results.json`; the top level gets a `summary.json` with per-domain and
-macro-averaged metrics. Per-domain results are cached, so an interrupted run
-resumes where it stopped.
+Mỗi lần chạy ghi, cho từng lĩnh vực, một tệp kết quả chạy TREC `run_<subtrack>_<split>.trec` và một
+tệp `results.json`; thư mục cấp cao nhất có tệp `summary.json` chứa các chỉ số theo từng lĩnh vực và
+trung bình macro. Kết quả theo lĩnh vực được lưu đệm, nên một lần chạy bị gián đoạn sẽ
+tiếp tục từ chỗ đã dừng.
 
-### 4️⃣ Score your own run
+### 4️⃣ Chấm điểm kết quả chạy của bạn
 
-nDCG@10 via `pytrec_eval` is the official RETECO metric.
+nDCG@10 qua `pytrec_eval` là chỉ số chính thức của RETECO.
 
 ```bash
 python -c "
@@ -271,74 +271,74 @@ print('nDCG@10', sum(v['ndcg_cut_10'] for v in s.values())/len(s))
 "
 ```
 
-A dependency-free starter baseline and scorer (`bm25_baseline.py`, `scorer.py`)
-are also in `starter_kit/` if you want to begin without installing a JDK.
+Một hệ thống cơ sở khởi đầu và trình chấm điểm không cần phụ thuộc (`bm25_baseline.py`, `scorer.py`)
+cũng có trong `starter_kit/` nếu bạn muốn bắt đầu mà không cần cài JDK.
 
 ---
 
-## 📈 Reference baseline
+## 📈 Hệ thống cơ sở tham chiếu
 
-BM25 on this release, macro-averaged over domains, nDCG@10. Retrieval and
-scoring use the same implementation the upstream benchmarks use (Lucene analyzer
-+ gensim `LuceneBM25Model`, k1=0.9 / b=0.4; `pytrec_eval` for metrics).
+BM25 trên bản phát hành này, lấy trung bình macro theo các lĩnh vực, nDCG@10. Truy xuất và
+chấm điểm dùng cùng cách cài đặt với các bộ đánh giá chuẩn gốc: bộ phân tích Lucene
+cùng `LuceneBM25Model` của gensim, k1=0.9 / b=0.4; dùng `pytrec_eval` để tính chỉ số.
 
-| Sub-track | train | dev |
+| Hạng mục con | Huấn luyện | Phát triển |
 | --- | ---: | ---: |
-| 1a · whole-query retrieval | 0.1075 | 0.1147 |
-| 1b · step-wise retrieval | 0.1024 | 0.1177 |
-| 2a · current turn only | 0.1837 | 0.1827 |
-| 2a · query + conversation history | 0.4539 | 0.4379 |
+| 1a · truy xuất toàn bộ truy vấn | 0.1075 | 0.1147 |
+| 1b · truy xuất từng bước | 0.1024 | 0.1177 |
+| 2a · chỉ lượt hiện tại | 0.1837 | 0.1827 |
+| 2a · truy vấn + lịch sử hội thoại | 0.4539 | 0.4379 |
 
-Track 1 numbers are on the deduplicated v1.1 corpora. On v1.0 they were
-0.0879 / 0.0967 (1a, train / dev) and 0.0852 / 0.1063 (1b), mostly because
-repeated copies of the same text used to fill top-10 slots.
+Số liệu Hạng mục 1 được đo trên kho ngữ liệu v1.1 đã loại bỏ trùng lặp. Trên v1.0, chúng là
+0.0879 / 0.0967 (1a, train / dev) và 0.0852 / 0.1063 (1b), chủ yếu vì
+các bản sao lặp lại của cùng một văn bản từng chiếm chỗ trong top-10.
 
-Two things to read off this table. Lexical matching alone is weak on Track 1 —
-temporal grounding is not a keyword problem, and there is a lot of headroom.
-And on Track 2, simply appending the conversation history lifts BM25 from 0.18
-to 0.44, which is the size of the signal a conversational system has to exploit.
+Có hai điều rút ra từ bảng này. Chỉ so khớp từ vựng thì yếu trên Hạng mục 1 —
+căn cứ thời gian không phải là bài toán từ khóa, và còn rất nhiều dư địa cải thiện.
+Còn trên Hạng mục 2, chỉ cần nối thêm lịch sử hội thoại là BM25 đã tăng từ 0.18
+lên 0.44, đó chính là độ lớn của tín hiệu mà một hệ thống hội thoại cần khai thác.
 
-Per-domain numbers for both splits: `BASELINE_RESULTS.md` in the RETECO repo.
+Số liệu theo từng lĩnh vực cho cả hai tập: `BASELINE_RESULTS.md` trong kho mã RETECO.
 
 ---
 
-## 🔗 Provenance
+## 🔗 Nguồn gốc
 
-Built deterministically from pinned upstream revisions:
+Được xây dựng một cách tất định từ các phiên bản gốc được cố định:
 
-| Source | Dataset | Revision |
+| Nguồn | Bộ dữ liệu | Phiên bản (revision) |
 | --- | --- | --- |
 | TEMPO | [`tempo26/Tempo`](https://huggingface.co/datasets/tempo26/Tempo) | `f9df06c05688225e37701974d23c8e3c5d4efaf6` |
 | RECOR | [`RECOR-Benchmark/RECOR`](https://huggingface.co/datasets/RECOR-Benchmark/RECOR) | `d9faa639019dcfa1a1fea2aece55ebcba3083c00` |
 
-Every published query, step, conversation and turn count reproduces exactly, as
-do the Track 2 corpora. The Track 1 corpora are the upstream corpora with exact
-duplicates removed (see v1.1 above); `duplicate_map.json` recovers every upstream
-ID. TEMPO's four LLM query-reformulation configs are **not** included: the
-official system input is the original query. Three RECOR gold document IDs name
-documents absent from every corpus; they are dropped from the qrels so a perfect
-ranking stays attainable, and are listed per-domain in `split_manifest.json`.
+Mọi số lượng truy vấn, bước, hội thoại và lượt đã công bố đều được tái lập chính xác, kho ngữ liệu
+Hạng mục 2 cũng vậy. Kho ngữ liệu Hạng mục 1 là kho ngữ liệu gốc sau khi loại bỏ các bản
+trùng lặp chính xác (xem phần v1.1 ở trên); `duplicate_map.json` cho phép khôi phục mọi ID
+gốc. Bốn cấu hình viết lại truy vấn bằng LLM của TEMPO **không** được đưa vào: đầu vào
+chính thức của hệ thống là truy vấn gốc. Ba ID tài liệu chuẩn của RECOR trỏ đến
+các tài liệu không có trong bất kỳ kho ngữ liệu nào; chúng bị loại khỏi qrels để vẫn có thể đạt được
+xếp hạng hoàn hảo, và được liệt kê theo từng lĩnh vực trong `split_manifest.json`.
 
 ---
 
-## ⚖️ Licensing
+## ⚖️ Giấy phép
 
-Two licenses, because text and annotations have different origins:
+Hai giấy phép, vì văn bản và chú thích có nguồn gốc khác nhau:
 
-- **Corpus and Q&A text — CC BY-SA 4.0.** All passage text originates from Stack
-  Exchange (directly, or via [BRIGHT](https://huggingface.co/datasets/xlangai/BRIGHT)
-  for six Track 2 domains). Stack Exchange contributions are CC BY-SA, which is
-  share-alike: redistribution must preserve the license and attribution. The
-  repository is labelled `cc-by-sa-4.0` for this reason.
-- **RETECO annotations — CC BY 4.0.** Split assignments, TREC qrels and
-  `split_manifest.json` are contributed by the RETECO organizers.
+- **Kho ngữ liệu và văn bản hỏi đáp — CC BY-SA 4.0.** Toàn bộ văn bản đoạn văn có nguồn gốc từ Stack
+  Exchange (trực tiếp, hoặc thông qua [BRIGHT](https://huggingface.co/datasets/xlangai/BRIGHT)
+  đối với sáu lĩnh vực của Hạng mục 2). Các đóng góp trên Stack Exchange theo giấy phép CC BY-SA, tức là
+  chia sẻ tương tự (share-alike): việc phân phối lại phải giữ nguyên giấy phép và phần ghi công. Vì
+  lý do này, kho dữ liệu được gắn nhãn `cc-by-sa-4.0`.
+- **Chú thích của RETECO — CC BY 4.0.** Việc phân chia tập, qrels TREC và
+  `split_manifest.json` do ban tổ chức RETECO đóng góp.
 
-Attribution for the underlying content remains with the original Stack Exchange
-authors. Do not redistribute hidden evaluation data or inferred gold labels.
+Quyền ghi công cho nội dung gốc vẫn thuộc về các tác giả ban đầu trên Stack Exchange.
+Không phân phối lại dữ liệu đánh giá ẩn hoặc các nhãn chuẩn suy luận được.
 
 ---
 
-## 📚 Citation
+## 📚 Trích dẫn
 
 ```bibtex
 @article{abdallah2026tempo,
@@ -358,5 +358,5 @@ authors. Do not redistribute hidden evaluation data or inferred gold labels.
 }
 ```
 
-The RETECO task-description citation will be added once the SemEval-2027
-proceedings are published.
+Trích dẫn bài mô tả nhiệm vụ RETECO sẽ được bổ sung khi kỷ yếu SemEval-2027
+được xuất bản.

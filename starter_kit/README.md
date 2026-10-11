@@ -1,79 +1,79 @@
-# RETECO starter kit
+# Bộ công cụ khởi đầu RETECO
 
-Reference code for SemEval-2027 Task 1. Two levels:
+Mã tham chiếu cho Nhiệm vụ 1 của SemEval-2027. Gồm hai cấp độ:
 
-| | Dependencies | Use |
+| | Phụ thuộc | Công dụng |
 | --- | --- | --- |
-| **Official baseline** (`official_baseline.py`) | pyserini + JDK, gensim, pytrec_eval | Reproduces the published RETECO baseline numbers |
-| **Pure-Python starter** (`bm25_baseline.py` + `scorer.py`) | none | Zero-install starting point; approximate |
+| **Hệ thống cơ sở chính thức** (`official_baseline.py`) | pyserini + JDK, gensim, pytrec_eval | Tái lập các con số hệ thống cơ sở RETECO đã công bố |
+| **Bản khởi đầu thuần Python** (`bm25_baseline.py` + `scorer.py`) | không có | Điểm khởi đầu không cần cài đặt; kết quả gần đúng |
 
-## Official baseline
+## Hệ thống cơ sở chính thức
 
-Retrieval is the verbatim `retrieval_bm25` from the two upstream benchmark
-repos, which ship byte-identical implementations:
+Phần truy xuất là nguyên văn hàm `retrieval_bm25` từ hai kho mã benchmark gốc,
+vốn có các cài đặt giống hệt nhau đến từng byte:
 
 - https://github.com/tempo-bench/Tempo — `retrievers.py`
 - https://github.com/RECOR-Benchmark/RECOR — `experiments/retrieval/retrievers.py`
 
-That is: the Lucene analyzer via pyserini, gensim `LuceneBM25Model` with
-`k1=0.9, b=0.4`, top-1000 cut. Scoring is the upstream `calculate_retrieval_metrics`
-— `pytrec_eval` with `ndcg_cut`, `map_cut`, `recall`, `P` and `recip_rank`.
-**nDCG@10 from `pytrec_eval` is the official RETECO metric.**
+Cụ thể là: bộ phân tích Lucene qua pyserini, `LuceneBM25Model` của gensim với
+`k1=0.9, b=0.4`, cắt ở top-1000. Phần chấm điểm là hàm `calculate_retrieval_metrics` gốc
+— `pytrec_eval` với `ndcg_cut`, `map_cut`, `recall`, `P` và `recip_rank`.
+**nDCG@10 từ `pytrec_eval` là chỉ số chính thức của RETECO.**
 
-Query construction follows upstream exactly:
+Cách xây dựng truy vấn theo đúng bản gốc:
 
-| Sub-track | Query | Topic id |
+| Hạng mục con | Truy vấn | ID chủ đề |
 | --- | --- | --- |
 | 1a | `examples['query']` | `id` |
 | 1b | `f"{base_query}\n\nStep: {step_instruction}"` | `step_id` |
-| 2a | `turn['query']` (current turn only) | `{conversation_id}_turn_{turn_id}` |
+| 2a | `turn['query']` (chỉ lượt hiện tại) | `{conversation_id}_turn_{turn_id}` |
 
 ```bash
 export JAVA_HOME=/path/to/jdk
 export JVM_PATH=$JAVA_HOME/lib/server/libjvm.so
 python official_baseline.py --data ../reteco_data --out ../baselines_official \
     --splits train dev
-# one domain only:
+# chỉ một lĩnh vực:
 python official_baseline.py --track1 iota --track2 drones --splits dev
 ```
 
-Per-domain `results.json` is cached, so the run is resumable. The corpus is
-analysed and indexed once per domain and reused across splits — the only
-deviation from upstream's per-invocation flow, and it changes wall clock only,
-not scores.
+Tệp `results.json` của từng lĩnh vực được lưu đệm, nên lần chạy có thể tiếp tục khi bị gián đoạn. Kho ngữ liệu được
+phân tích và lập chỉ mục một lần cho mỗi lĩnh vực và được dùng lại cho các tập — đây là điểm
+khác biệt duy nhất so với luồng chạy theo từng lần gọi của bản gốc, và nó chỉ thay đổi thời gian chạy thực tế,
+không thay đổi điểm số.
 
-## Pure-Python starter
+## Bản khởi đầu thuần Python
 
-No dependencies at all. Approximates the official setup (same `k1`/`b`, simpler
-tokenisation) and adds RETECO's temporal and turn-depth diagnostics, which are
-not part of the upstream retrieval metrics.
+Hoàn toàn không có phụ thuộc. Mô phỏng gần đúng thiết lập chính thức (cùng `k1`/`b`, cách
+tách từ đơn giản hơn) và bổ sung các chỉ số chẩn đoán về thời gian và độ sâu lượt của RETECO, vốn
+không thuộc các chỉ số truy xuất gốc.
 
 ```bash
 python run_release.py --data ../reteco_data --split dev --track1 iota --track2 drones
 ```
 
-## Building the release from upstream
+## Xây dựng bản phát hành từ nguồn gốc
 
 ```bash
-python download_raw.py                     # pinned TEMPO + RECOR snapshots
+python download_raw.py                     # bản chụp TEMPO + RECOR với phiên bản được cố định
 python build_release.py --raw ../hf_raw --out ../reteco_data_v1.0
-python dedup_track1.py --src ../reteco_data_v1.0 --dst ../reteco_data       # data v1.1
+python dedup_track1.py --src ../reteco_data_v1.0 --dst ../reteco_data       # dữ liệu v1.1
 python verify_dedup_track1.py --old ../reteco_data_v1.0 --new ../reteco_data
 ```
 
-`build_release.py` is deterministic: same seed, same splits, and it re-verifies
-every published count on each run. It produces data v1.0.
+`build_release.py` có tính tất định: cùng seed, cùng cách chia, và nó kiểm tra lại
+mọi số lượng đã công bố ở mỗi lần chạy. Script này tạo ra dữ liệu v1.0.
 
-`dedup_track1.py` turns v1.0 into v1.1. In every Track 1 corpus it keeps one
-copy of each text (identical ignoring whitespace), always keeping a gold ID
-when a group of copies contains one, and renames removed IDs to the kept ID in
-every task file. It writes `duplicate_map.json` (removed ID -> kept ID) per
-domain. Track 2 is copied unchanged. `verify_dedup_track1.py` checks the result
-against v1.0: no gold text lost, qrels and task files equal to v1.0 with IDs
-mapped, Track 2 byte-identical.
+`dedup_track1.py` chuyển v1.0 thành v1.1. Trong mỗi kho ngữ liệu Hạng mục 1, script giữ một
+bản cho mỗi văn bản (giống hệt nhau khi bỏ qua khoảng trắng), luôn giữ lại một ID chuẩn
+khi một nhóm bản sao có chứa ID đó, và đổi tên các ID bị loại bỏ thành ID được giữ lại trong
+mọi tệp nhiệm vụ. Script ghi tệp `duplicate_map.json` (ID bị loại bỏ -> ID được giữ lại) cho mỗi
+lĩnh vực. Hạng mục 2 được sao chép nguyên vẹn. `verify_dedup_track1.py` kiểm tra kết quả
+so với v1.0: không mất văn bản chuẩn nào, qrels và các tệp nhiệm vụ bằng với v1.0 sau khi ánh xạ ID,
+Hạng mục 2 giống hệt đến từng byte.
 
-## Format checker
+## Trình kiểm tra định dạng
 
-`format_checker.py` validates a submission before you send it. Run it on every
-run file — a submission that fails validation should never reach the
-competition platform.
+`format_checker.py` kiểm tra một bài nộp trước khi bạn gửi đi. Hãy chạy nó trên mọi
+tệp kết quả chạy — một bài nộp không vượt qua kiểm tra thì không bao giờ nên được đưa lên
+nền tảng thi đấu.

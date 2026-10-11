@@ -1,21 +1,21 @@
-# Security and private reporting
+# Bảo mật và báo cáo riêng
 
-## Supported resources
+## Các tài nguyên được hỗ trợ
 
-Security and benchmark-integrity reports are accepted for the current RETECO
-website, evaluation utilities, submission infrastructure, and unreleased test
-data.
+Chúng tôi tiếp nhận các báo cáo về bảo mật và tính toàn vẹn của bộ đánh giá chuẩn đối với trang web
+RETECO hiện tại, các công cụ đánh giá, hạ tầng nộp bài và dữ liệu kiểm tra
+chưa phát hành.
 
-## Report privately
+## Báo cáo riêng
 
-Do not open a public issue for:
+Không mở issue công khai cho các trường hợp:
 
-- exposed credentials or tokens;
-- access to hidden test judgments;
-- leaderboard or submission-platform vulnerabilities;
-- personally identifiable information in task data;
-- methods that could reveal private participant submissions.
+- lộ thông tin đăng nhập hoặc token;
+- truy cập được nhãn đánh giá của tập kiểm tra ẩn;
+- lỗ hổng của bảng xếp hạng hoặc nền tảng nộp bài;
+- thông tin nhận dạng cá nhân trong dữ liệu nhiệm vụ;
+- các phương pháp có thể làm lộ bài nộp riêng tư của người tham gia.
 
-Send a concise report to `abdelrahman.abdallah@uibk.ac.at`, including the
-affected resource, reproduction steps, and potential impact. Do not include
-unnecessary copies of sensitive data.
+Gửi một báo cáo ngắn gọn đến `abdelrahman.abdallah@uibk.ac.at`, bao gồm
+tài nguyên bị ảnh hưởng, các bước tái hiện và tác động tiềm tàng. Không đính kèm
+các bản sao không cần thiết của dữ liệu nhạy cảm.

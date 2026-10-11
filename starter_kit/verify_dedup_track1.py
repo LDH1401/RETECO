@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Independent check of a dedup_track1.py output against the original release.
+"""Kiểm tra độc lập đầu ra của dedup_track1.py so với bản phát hành gốc.
 
-Reads both releases from disk and checks, per Track 1 domain:
-  corpus   - new IDs unique; no two new docs share text; every old doc is either
-             kept byte-for-byte or mapped to a kept doc with the same text
-  qrels    - new qrels == old qrels with IDs mapped (duplicates collapsed);
-             same topics; same number of distinct gold texts per topic
-  gold     - every mapped gold ID points at a doc with the same text
-  task     - examples/steps/guidance equal the old records with IDs mapped;
-             every ID they name exists in the new corpus
-  splits   - record IDs and order unchanged in every task file
-Track 2 is checked to be byte-identical.
+Đọc cả hai bản phát hành từ đĩa và kiểm tra, cho từng lĩnh vực của Hạng mục 1:
+  corpus   - ID mới là duy nhất; không có hai tài liệu mới nào có cùng văn bản; mọi tài liệu cũ
+             hoặc được giữ nguyên từng byte, hoặc được ánh xạ tới một tài liệu được giữ lại có cùng văn bản
+  qrels    - qrels mới == qrels cũ sau khi ánh xạ ID (các bản trùng được gộp);
+             cùng tập chủ đề; cùng số lượng văn bản chuẩn khác nhau cho mỗi chủ đề
+  gold     - mọi ID chuẩn được ánh xạ đều trỏ tới một tài liệu có cùng văn bản
+  task     - examples/steps/guidance bằng các bản ghi cũ sau khi ánh xạ ID;
+             mọi ID mà chúng nêu đều tồn tại trong kho ngữ liệu mới
+  splits   - ID và thứ tự bản ghi không đổi trong mọi tệp nhiệm vụ
+Hạng mục 2 được kiểm tra để đảm bảo giống hệt đến từng byte.
 
     python verify_dedup_track1.py --old reteco_data --new reteco_data_v1.1
 """
@@ -80,8 +80,8 @@ def ids_in(obj, universe, out):
 
 
 def same_modulo_collapse(old, new, universe):
-    """new must equal old except that repeated doc IDs inside a plain ID list
-    are collapsed to their first occurrence. Nothing else may be dropped."""
+    """new phải bằng old, ngoại trừ việc các doc ID lặp lại trong một danh sách ID thuần
+    được gộp về lần xuất hiện đầu tiên. Không được bỏ bất cứ thứ gì khác."""
     if isinstance(old, dict) and isinstance(new, dict):
         return old.keys() == new.keys() and all(
             same_modulo_collapse(old[k], new[k], universe) for k in old)
@@ -106,7 +106,7 @@ def check_domain(args):
     new_lines, new_keys = corpus(os.path.join(n, "documents.jsonl"))
     m = json.load(open(os.path.join(n, "duplicate_map.json"), encoding="utf-8"))
 
-    # corpus
+    # kho ngữ liệu
     if len(set(new_keys.values())) != len(new_keys):
         errs.append("new corpus still contains duplicate texts")
     if len(new_keys) != len(set(old_keys.values())):
@@ -125,7 +125,7 @@ def check_domain(args):
             errs.append(f"doc mapped to missing/different text: {i} -> {m[i]}")
             break
 
-    # qrels + gold
+    # qrels + dữ liệu chuẩn
     gold_pairs = 0
     for name in ("qrels", "qrels_steps"):
         for split in ("train", "dev"):
@@ -142,7 +142,7 @@ def check_domain(args):
                 elif len({old_keys[d] for d in docs}) != len({new_keys[d] for d in nq.get(t, ())}):
                     errs.append(f"{name}_{split}/{t}: distinct gold text count changed")
 
-    # task files
+    # các tệp nhiệm vụ
     universe = set(old_lines)
     new_ids = set(new_lines)
     for name in ("examples", "steps", "guidance"):
@@ -164,7 +164,7 @@ def check_domain(args):
             if refs - set(new_lines):
                 errs.append(f"{name}_{split}: names IDs absent from new corpus")
 
-    # examples/steps gold_ids agree with qrels
+    # gold_ids trong examples/steps khớp với qrels
     for split in ("train", "dev"):
         nq = qrels(os.path.join(n, f"qrels_{split}.txt"))
         for r in jsonl(os.path.join(n, f"examples_{split}.jsonl")):
@@ -196,7 +196,7 @@ def main():
                 print("     ", e)
             ok &= not errs
 
-    # Track 2 must be untouched
+    # Hạng mục 2 phải được giữ nguyên
     o2, n2 = os.path.join(args.old, "track2_recor"), os.path.join(args.new, "track2_recor")
     for dom in sorted(os.listdir(o2)):
         files = sorted(os.listdir(os.path.join(o2, dom)))

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Download full TEMPO and RECOR releases at the revisions pinned in the RETECO manifest."""
+"""Tải toàn bộ bản phát hành TEMPO và RECOR tại các phiên bản được cố định trong tệp kê khai của RETECO."""
 import os
 from huggingface_hub import snapshot_download
 

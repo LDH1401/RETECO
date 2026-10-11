@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Driver: run the BM25 starter baseline over the RETECO release layout and score it.
+"""Script điều phối: chạy hệ thống cơ sở khởi đầu BM25 trên cấu trúc bản phát hành RETECO và chấm điểm.
 
-Unlike run_all.py (which targets the pilot tree), this reads the train/dev
-release produced by build_release.py.
+Khác với run_all.py (vốn nhắm vào cây thư mục thí điểm), script này đọc bản phát hành
+train/dev do build_release.py tạo ra.
 
-Usage:
-    python run_release.py --data ../reteco_data --split dev              # everything
+Cách dùng:
+    python run_release.py --data ../reteco_data --split dev              # chạy tất cả
     python run_release.py --data ../reteco_data --split dev \
-        --track1 iota law --track2 drones                                # selected domains
+        --track1 iota law --track2 drones                                # các lĩnh vực được chọn
 """
 import argparse
 import json
@@ -37,8 +37,8 @@ def main():
     ap.add_argument("--data", default=os.path.join(HERE, "..", "reteco_data"))
     ap.add_argument("--out", default=os.path.join(HERE, "runs_release"))
     ap.add_argument("--split", choices=["train", "dev"], default="dev")
-    ap.add_argument("--track1", nargs="*", help="domain names (default: all)")
-    ap.add_argument("--track2", nargs="*", help="domain names (default: all)")
+    ap.add_argument("--track1", nargs="*", help="tên các lĩnh vực (mặc định: tất cả)")
+    ap.add_argument("--track2", nargs="*", help="tên các lĩnh vực (mặc định: tất cả)")
     ap.add_argument("--top-k", type=int, default=100)
     args = ap.parse_args()
 
@@ -53,14 +53,14 @@ def main():
         d = os.path.join(t1_root, dom)
         os.makedirs(os.path.join(runs, "track1", dom), exist_ok=True)
         entry = {}
-        # 1a: whole-query retrieval
+        # 1a: truy xuất toàn bộ truy vấn
         run = os.path.join(runs, "track1", dom, f"1a_{sp}.txt")
         sh("bm25_baseline.py", "--track", "1", "--top-k", str(args.top_k),
            "--corpus", f"{d}/documents.jsonl",
            "--queries", f"{d}/examples_{sp}.jsonl", "--out", run)
         entry["1a"] = score(1, run, f"{d}/qrels_{sp}.txt",
                             steps=f"{d}/steps_{sp}.jsonl")
-        # 1b: step-wise retrieval
+        # 1b: truy xuất từng bước
         run = os.path.join(runs, "track1", dom, f"1b_{sp}.txt")
         sh("bm25_baseline.py", "--track", "1", "--level", "step",
            "--top-k", str(args.top_k), "--corpus", f"{d}/documents.jsonl",

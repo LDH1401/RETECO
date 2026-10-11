@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Build the unified RETECO SemEval-2027 train/dev release.
+"""Xây dựng bản phát hành train/dev hợp nhất của RETECO SemEval-2027.
 
-Reads the full TEMPO and RECOR snapshots downloaded by download_raw.py and
-emits one self-contained tree: every domain carries its own corpus, its task
-files split 70/30 into train and dev, and TREC qrels for both splits.
+Đọc các bản chụp đầy đủ của TEMPO và RECOR do download_raw.py tải về và
+xuất ra một cây thư mục tự chứa đầy đủ: mỗi lĩnh vực có kho ngữ liệu riêng, các tệp
+nhiệm vụ được chia 70/30 thành train và dev, và qrels TREC cho cả hai tập.
 
-The split unit is the *query* (Track 1) and the *whole conversation* (Track 2).
-Corpora are never split -- retrieval always runs against the full domain corpus.
-Track 1b steps and the reformulation variants follow their parent query.
+Đơn vị chia là *truy vấn* (Hạng mục 1) và *toàn bộ cuộc hội thoại* (Hạng mục 2).
+Kho ngữ liệu không bao giờ bị chia -- việc truy xuất luôn chạy trên toàn bộ kho ngữ liệu của lĩnh vực.
+Các bước của Hạng mục con 1b và các biến thể viết lại truy vấn đi theo truy vấn cha của chúng.
 
-Usage:
+Cách dùng:
     python build_release.py --raw ../hf_raw --out ../reteco_data
 """
 import argparse
@@ -32,9 +32,9 @@ RECOR_PINS = ("RECOR-Benchmark/RECOR", "d9faa639019dcfa1a1fea2aece55ebcba3083c00
 
 
 
-# ---------------------------------------------------------------- helpers ---
+# -------------------------------------------------------------- hàm hỗ trợ ---
 def plain(v):
-    """numpy/pandas -> json-serialisable python."""
+    """numpy/pandas -> đối tượng python tuần tự hóa được thành json."""
     if isinstance(v, np.ndarray):
         return [plain(x) for x in v]
     if isinstance(v, (list, tuple)):
@@ -47,7 +47,7 @@ def plain(v):
 
 
 def gold_list(v):
-    """TEMPO stores step gold_ids as a repr'd list string; queries store arrays."""
+    """TEMPO lưu gold_ids của bước dưới dạng chuỗi repr của list; còn truy vấn lưu dạng mảng."""
     if v is None:
         return []
     if isinstance(v, str):
@@ -69,7 +69,7 @@ def write_jsonl(path, records):
 
 
 def write_qrels(path, pairs):
-    """pairs: iterable of (qid, docid). Binary relevance, TREC 4-column."""
+    """pairs: iterable gồm các cặp (qid, docid). Mức liên quan nhị phân, TREC 4 cột."""
     n = 0
     with open(path, "w", encoding="utf-8") as f:
         for qid, docid in pairs:
@@ -79,7 +79,7 @@ def write_qrels(path, pairs):
 
 
 def split_ids(ids, seed_salt):
-    """Deterministic 70/30 split over a sorted id list."""
+    """Chia 70/30 một cách tất định trên danh sách id đã sắp xếp."""
     ids = sorted(ids)
     rng = random.Random(f"{SEED}:{seed_salt}")
     shuffled = ids[:]
@@ -89,7 +89,7 @@ def split_ids(ids, seed_salt):
     return set(shuffled[:n_train]), set(shuffled[n_train:])
 
 
-# ------------------------------------------------------------- track 1 -----
+# ---------------------------------------------------------- hạng mục 1 -----
 def build_tempo(raw, out, manifest, report):
     src = os.path.join(raw, "tempo")
     domains = sorted(f[:-8] for f in os.listdir(os.path.join(src, "examples"))
@@ -98,7 +98,7 @@ def build_tempo(raw, out, manifest, report):
         dst = os.path.join(out, "track1_tempo", dom)
         os.makedirs(dst, exist_ok=True)
 
-        # ---- corpus (never split) -----------------------------------------
+        # ---- kho ngữ liệu (không bao giờ bị chia) ---------------------------
         corpus_ids = set()
         n_docs = 0
         with open(os.path.join(dst, "documents.jsonl"), "w", encoding="utf-8") as f:
@@ -111,7 +111,7 @@ def build_tempo(raw, out, manifest, report):
                     corpus_ids.add(did)
                     n_docs += 1
 
-        # ---- queries -------------------------------------------------------
+        # ---- truy vấn ------------------------------------------------------
         ex = pq.read_table(os.path.join(src, "examples", f"{dom}.parquet")).to_pylist()
         by_qid = OrderedDict()
         for row in ex:
@@ -123,7 +123,7 @@ def build_tempo(raw, out, manifest, report):
             }
         train_ids, dev_ids = split_ids(by_qid.keys(), f"tempo:{dom}")
 
-        # ---- steps (Sub-track 1b) + temporal guidance -----------------------
+        # ---- các bước (Hạng mục con 1b) + hướng dẫn thời gian ---------------
         st = pq.read_table(os.path.join(src, "steps", f"{dom}.parquet")).to_pylist()
         step_records, guidance = [], []
         n_steps = 0
@@ -139,7 +139,7 @@ def build_tempo(raw, out, manifest, report):
             for entry in qg.get("retrieval_plan") or []:
                 gids = gold_list(entry.get("gold_ids"))
                 if not gids:
-                    continue  # unscoreable: no gold evidence for this step
+                    continue  # không chấm điểm được: bước này không có bằng chứng chuẩn
                 steps.append({
                     "step_id": f"{qid}_step{entry.get('step')}",
                     "step": entry.get("step"),
@@ -147,8 +147,8 @@ def build_tempo(raw, out, manifest, report):
                     "gold_ids": gids,
                 })
             if steps:
-                # One record per query, mirroring the upstream layout: the query
-                # text appears once and its steps are nested beneath it.
+                # Một bản ghi cho mỗi truy vấn, theo đúng cấu trúc gốc: văn bản truy vấn
+                # xuất hiện một lần và các bước của nó lồng bên dưới.
                 step_records.append({
                     "id": qid,
                     "query": by_qid[qid]["query"] if qid in by_qid else row["query"],
@@ -156,7 +156,7 @@ def build_tempo(raw, out, manifest, report):
                 })
                 n_steps += len(steps)
 
-        # ---- emit splits ----------------------------------------------------
+        # ---- xuất các tập ---------------------------------------------------
         counts = {}
         for split, keep in (("train", train_ids), ("dev", dev_ids)):
             qs = [q for qid, q in by_qid.items() if qid in keep]
@@ -176,7 +176,7 @@ def build_tempo(raw, out, manifest, report):
                              "step_records": len(ss),
                              "qrels_query": nq, "qrels_step": ns}
 
-        # ---- validation ------------------------------------------------------
+        # ---- kiểm tra hợp lệ --------------------------------------------------
         assert not (train_ids & dev_ids), f"{dom}: train/dev overlap"
         missing = {d for q in by_qid.values() for d in q["gold_ids"] if d not in corpus_ids}
         missing |= {d for r in step_records for st_ in r["steps"]
@@ -198,7 +198,7 @@ def build_tempo(raw, out, manifest, report):
               f"missing_gold={len(missing)}", flush=True)
 
 
-# ------------------------------------------------------------- track 2 -----
+# ---------------------------------------------------------- hạng mục 2 -----
 def build_recor(raw, out, manifest, report):
     src = os.path.join(raw, "recor", "data")
     bench_dir = os.path.join(src, "benchmark")
@@ -209,7 +209,7 @@ def build_recor(raw, out, manifest, report):
         dst = os.path.join(out, "track2_recor", dom)
         os.makedirs(dst, exist_ok=True)
 
-        # ---- corpus (never split) -----------------------------------------
+        # ---- kho ngữ liệu (không bao giờ bị chia) ---------------------------
         corpus_ids = set()
         n_docs = 0
         src_docs = os.path.join(src, "corpus", f"{upstream}_documents.jsonl")
@@ -224,7 +224,7 @@ def build_recor(raw, out, manifest, report):
                 corpus_ids.add(d["doc_id"])
                 n_docs += 1
 
-        # ---- conversations (atomic split unit) -----------------------------
+        # ---- hội thoại (đơn vị chia không tách rời) --------------------------
         convs = OrderedDict()
         with open(os.path.join(bench_dir, fn), encoding="utf-8") as f:
             for ln in f:
@@ -244,12 +244,12 @@ def build_recor(raw, out, manifest, report):
             for c in sel:
                 for t in c["turns"]:
                     n_turns += 1
-                    qid = f"{c['id']}_turn_{t['turn_id']}"  # official RECOR topic id
+                    qid = f"{c['id']}_turn_{t['turn_id']}"  # ID chủ đề chính thức của RECOR
                     for d in t.get("gold_doc_ids") or []:
                         if d in corpus_ids:
                             pairs.append((qid, d))
                         else:
-                            missing.add(d)  # upstream dangling id: not retrievable
+                            missing.add(d)  # id treo từ bản gốc: không thể truy xuất
             nq = write_qrels(os.path.join(dst, f"qrels_{split}.txt"), pairs)
             counts[split] = {"conversations": len(sel), "turns": n_turns, "qrels": nq}
 

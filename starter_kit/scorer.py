@@ -1,20 +1,20 @@
 #!/usr/bin/env python3
-"""RETECO official scorer (pure Python, no dependencies).
+"""Trình chấm điểm chính thức của RETECO (thuần Python, không có phụ thuộc).
 
-Scores a TREC run file against qrels and reports the official metric plus the
-track-specific diagnostics.
+Chấm điểm một tệp kết quả chạy TREC so với qrels và báo cáo chỉ số chính thức cùng
+các chỉ số chẩn đoán riêng của từng hạng mục.
 
-TRACK 1 (Temporal Grounded Retrieval):
+HẠNG MỤC 1 (Truy xuất có căn cứ thời gian):
     python scorer.py --track 1 --run run.txt --qrels qrels.txt [--steps steps.jsonl]
-    -> nDCG@10 (official) + TP@10, TR@10, TC@10, NDCG|FC@10
-       (TC / NDCG|FC require --steps, which defines the required time periods.)
+    -> nDCG@10 (chính thức) + TP@10, TR@10, TC@10, NDCG|FC@10
+       (TC / NDCG|FC cần --steps, tệp định nghĩa các giai đoạn thời gian cần thiết.)
 
-TRACK 2 (Reasoning-Intensive Conversational Retrieval):
+HẠNG MỤC 2 (Truy xuất hội thoại đòi hỏi suy luận chuyên sâu):
     python scorer.py --track 2 --run run.txt --qrels qrels.txt
-    -> nDCG@10 (official) overall, plus a breakdown by turn position (T1..T5+).
+    -> nDCG@10 (chính thức) tổng thể, cùng phân tích theo vị trí lượt (T1..T5+).
 
-Run file:  qid  Q0  docid  rank  score  tag
-Qrels:     qid  0   docid  rel
+Tệp kết quả chạy:  qid  Q0  docid  rank  score  tag
+Qrels:             qid  0   docid  rel
 """
 import argparse
 import json
@@ -52,9 +52,9 @@ def load_run(path):
 
 
 def load_steps(path):
-    """qid -> list of gold-id sets (one per required period/step).
+    """qid -> danh sách các tập gold-id (mỗi tập ứng với một giai đoạn/bước cần thiết).
 
-    steps_*.jsonl holds one record per query with its steps nested beneath it.
+    steps_*.jsonl chứa một bản ghi cho mỗi truy vấn, với các bước lồng bên dưới.
     """
     periods = defaultdict(list)
     with open(path) as f:
@@ -68,7 +68,7 @@ def load_steps(path):
 
 
 def turn_bucket(qid):
-    """RECOR topic ids look like 'ex_3025_turn_3' -> bucket 'T3' (T5+ capped)."""
+    """ID chủ đề RECOR có dạng 'ex_3025_turn_3' -> nhóm 'T3' (từ lượt 5 trở đi gộp vào T5+)."""
     if "_turn_" in qid:
         try:
             t = int(qid.rsplit("_turn_", 1)[1])
@@ -83,9 +83,9 @@ def main():
     ap.add_argument("--track", type=int, choices=[1, 2], required=True)
     ap.add_argument("--run", required=True)
     ap.add_argument("--qrels", required=True)
-    ap.add_argument("--steps", help="Track 1: steps.jsonl defining required periods")
+    ap.add_argument("--steps", help="Hạng mục 1: steps.jsonl định nghĩa các giai đoạn cần thiết")
     ap.add_argument("--k", type=int, default=10)
-    ap.add_argument("--json", action="store_true", help="emit JSON instead of text")
+    ap.add_argument("--json", action="store_true", help="xuất JSON thay vì văn bản")
     args = ap.parse_args()
 
     gold = load_qrels(args.qrels)

@@ -4,219 +4,218 @@
 
 # RETECO
 
-### A SemEval-2027 Shared Task on Reasoning-Oriented Retrieval
+### Nhiệm vụ chung SemEval-2027 về truy xuất định hướng suy luận
 
-Retrieval that must reason about **when** evidence applies<br>
-and **what the conversation has already established**.
+Truy xuất cần suy luận về **thời điểm** bằng chứng còn áp dụng<br>
+và **những gì cuộc hội thoại đã xác lập**.
 
-[![SemEval-2027 Task 1](https://img.shields.io/badge/SemEval--2027-Task%201-07101d?style=for-the-badge)](https://semeval.github.io/SemEval2027/)
-[![Dataset on Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-Available-5dd9ff?style=for-the-badge)](https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027)
-[![Website](https://img.shields.io/badge/Website-Live-1f6feb?style=for-the-badge)](https://datascienceuibk.github.io/RETECO/)
+[![SemEval-2027 Nhiệm vụ 1](https://img.shields.io/badge/SemEval--2027-Nhi%E1%BB%87m%20v%E1%BB%A5%201-07101d?style=for-the-badge)](https://semeval.github.io/SemEval2027/)
+[![Bộ dữ liệu trên Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20B%E1%BB%99%20d%E1%BB%AF%20li%E1%BB%87u-%C4%90%C3%A3%20ph%C3%A1t%20h%C3%A0nh-5dd9ff?style=for-the-badge)](https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027)
+[![Trang web](https://img.shields.io/badge/Trang%20web-%C4%90ang%20ho%E1%BA%A1t%20%C4%91%E1%BB%99ng-1f6feb?style=for-the-badge)](https://datascienceuibk.github.io/RETECO/)
 
-![Domains](https://img.shields.io/badge/domains-24-informational?style=flat-square)
-![Documents](https://img.shields.io/badge/documents-1.67M-informational?style=flat-square)
-![Split](https://img.shields.io/badge/train%2Fdev-70%2F30-informational?style=flat-square)
-![Language](https://img.shields.io/badge/language-English-informational?style=flat-square)
-![Text licence](https://img.shields.io/badge/text-CC%20BY--SA%204.0-brightgreen?style=flat-square)
-![Annotation licence](https://img.shields.io/badge/annotations-CC%20BY%204.0-brightgreen?style=flat-square)
+![Lĩnh vực](https://img.shields.io/badge/l%C4%A9nh%20v%E1%BB%B1c-24-informational?style=flat-square)
+![Tài liệu](https://img.shields.io/badge/t%C3%A0i%20li%E1%BB%87u-1.67M-informational?style=flat-square)
+![Cách chia](https://img.shields.io/badge/train%2Fdev-70%2F30-informational?style=flat-square)
+![Ngôn ngữ](https://img.shields.io/badge/ng%C3%B4n%20ng%E1%BB%AF-ti%E1%BA%BFng%20Anh-informational?style=flat-square)
+![Giấy phép văn bản](https://img.shields.io/badge/v%C4%83n%20b%E1%BA%A3n-CC%20BY--SA%204.0-brightgreen?style=flat-square)
+![Giấy phép chú thích](https://img.shields.io/badge/ch%C3%BA%20th%C3%ADch-CC%20BY%204.0-brightgreen?style=flat-square)
 
-**[🌐 Website](https://datascienceuibk.github.io/RETECO/)** ·
-**[📋 Task](https://datascienceuibk.github.io/RETECO/task.html)** ·
-**[📊 Data](https://datascienceuibk.github.io/RETECO/data.html)** ·
-**[🔍 Samples](https://datascienceuibk.github.io/RETECO/samples.html)** ·
-**[📐 Evaluation](https://datascienceuibk.github.io/RETECO/evaluation.html)** ·
-**[📄 Papers](https://datascienceuibk.github.io/RETECO/papers.html)** ·
-**[🚀 Participate](https://datascienceuibk.github.io/RETECO/participate.html)**
+**[🌐 Trang web](https://datascienceuibk.github.io/RETECO/)** ·
+**[📋 Nhiệm vụ](https://datascienceuibk.github.io/RETECO/task.html)** ·
+**[📊 Dữ liệu](https://datascienceuibk.github.io/RETECO/data.html)** ·
+**[🔍 Dữ liệu mẫu](https://datascienceuibk.github.io/RETECO/samples.html)** ·
+**[📐 Đánh giá](https://datascienceuibk.github.io/RETECO/evaluation.html)** ·
+**[📄 Bài báo](https://datascienceuibk.github.io/RETECO/papers.html)** ·
+**[🚀 Tham gia](https://datascienceuibk.github.io/RETECO/participate.html)**
 
-[📕 Read the task proposal (PDF)](docs/assets/papers/RETECO_SemEval_2027_Proposal.pdf)
+[📕 Đọc đề xuất nhiệm vụ (PDF)](docs/assets/papers/RETECO_SemEval_2027_Proposal.pdf)
 
 </div>
 
 ---
 
-## 📰 News
+## 📰 Tin tức
 
-| Date | | Update |
+| Ngày | | Cập nhật |
 | :--- | :---: | :--- |
-| **25 Sep 2026** | 🧹 | **Data v1.1: duplicate documents removed from Track 1.** Texts stored several times under different IDs are now kept once (1,654,055 → 1,167,159 Track 1 documents). Gold labels are preserved; queries, splits and Track 2 are unchanged. Please re-download the data and rebuild your indexes — [what changed](https://datascienceuibk.github.io/RETECO/data.html#versions). |
-| **30 Aug 2026** | 🚀 | **Training and development data released.** All 24 domains, 2.16M documents, 70/30 train/dev splits with gold judgments for both — [get it on Hugging Face](https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027). |
-| **30 Aug 2026** | 🧰 | **Starter kit published.** BM25 baselines, the official `pytrec_eval` scorer, a submission format checker, and the deterministic build script — [`starter_kit/`](starter_kit/). |
-| **30 Aug 2026** | 🧪 | **Reference baselines** for every retrieval sub-track on both splits — [`BASELINE_RESULTS.md`](starter_kit/BASELINE_RESULTS.md). |
-| **11 Aug 2026** | ✅ | **RETECO accepted as SemEval-2027 Task 1** — [see the task list](https://semeval.github.io/SemEval2027/). |
-| **08 Aug 2026** | 📦 | **Sample data published** — a compact, human-inspected package showing the exact record and submission formats. [Inspect the samples](https://datascienceuibk.github.io/RETECO/samples.html). |
+| **25/09/2026** | 🧹 | **Dữ liệu v1.1: đã loại bỏ tài liệu trùng lặp khỏi Hạng mục 1.** Các văn bản được lưu nhiều lần dưới các ID khác nhau giờ chỉ được giữ lại một lần (1,654,055 → 1,167,159 tài liệu Hạng mục 1). Nhãn chuẩn được giữ nguyên; truy vấn, cách chia tập và Hạng mục 2 không thay đổi. Vui lòng tải lại dữ liệu và xây dựng lại chỉ mục — [những gì đã thay đổi](https://datascienceuibk.github.io/RETECO/data.html#versions). |
+| **30/08/2026** | 🚀 | **Đã phát hành dữ liệu huấn luyện và phát triển.** Cả 24 lĩnh vực, 2.16M tài liệu, chia train/dev theo tỷ lệ 70/30 kèm nhãn đánh giá chuẩn cho cả hai tập — [tải về từ Hugging Face](https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027). |
+| **30/08/2026** | 🧰 | **Đã công bố bộ công cụ khởi đầu.** Các hệ thống cơ sở BM25, trình chấm điểm chính thức dùng `pytrec_eval`, trình kiểm tra định dạng bài nộp và script xây dựng tất định — [`starter_kit/`](starter_kit/). |
+| **30/08/2026** | 🧪 | **Các hệ thống cơ sở tham chiếu** cho mọi hạng mục con truy xuất trên cả hai tập — [`BASELINE_RESULTS.md`](starter_kit/BASELINE_RESULTS.md). |
+| **11/08/2026** | ✅ | **RETECO được chấp nhận là Nhiệm vụ 1 của SemEval-2027** — [xem danh sách nhiệm vụ](https://semeval.github.io/SemEval2027/). |
+| **08/08/2026** | 📦 | **Đã công bố dữ liệu mẫu** — một gói nhỏ gọn, đã được con người kiểm tra, thể hiện chính xác định dạng bản ghi và bài nộp. [Xem các mẫu](https://datascienceuibk.github.io/RETECO/samples.html). |
 
 > [!NOTE]
-> **Next up:** registration, the participant mailing list, and the competition
-> platform. They will be announced here and on the
-> [participation guide](https://datascienceuibk.github.io/RETECO/participate.html).
+> **Sắp tới:** đăng ký, danh sách thư cho người tham gia và nền tảng thi đấu.
+> Các thông tin này sẽ được thông báo tại đây và trên
+> [hướng dẫn tham gia](https://datascienceuibk.github.io/RETECO/participate.html).
 
 ---
 
-## ⚡ Quick start
+## ⚡ Bắt đầu nhanh
 
 ```bash
-# 1 — get the data (v1.1, ~3.2 GB; everything you need, in one download)
+# 1 — lấy dữ liệu (v1.1, ~3.2 GB; mọi thứ bạn cần, trong một lần tải)
 pip install huggingface_hub
 hf download DataScience-UIBK/RETECO-SemEval2027 --repo-type dataset --local-dir reteco_data
 
-# 2 — get the baselines
+# 2 — lấy các hệ thống cơ sở
 git clone https://github.com/DataScienceUIBK/RETECO.git
 cd RETECO/starter_kit && pip install -r requirements.txt
 
-# 3 — develop on train, then check yourself on dev
+# 3 — phát triển trên train, sau đó tự kiểm tra trên dev
 python official_baseline.py --data ../../reteco_data --splits train
 python official_baseline.py --data ../../reteco_data --splits dev
 ```
 
-New to the task? The [participation guide](https://datascienceuibk.github.io/RETECO/participate.html)
-walks through choosing a sub-track, building a system, and scoring it locally
-with the same metric the leaderboard uses.
+Mới làm quen với nhiệm vụ? [Hướng dẫn tham gia](https://datascienceuibk.github.io/RETECO/participate.html)
+sẽ dẫn bạn qua các bước chọn hạng mục con, xây dựng hệ thống và chấm điểm cục bộ
+bằng đúng chỉ số mà bảng xếp hạng sử dụng.
 
-## 🎯 Tracks
+## 🎯 Các hạng mục
 
-| Track | Sub-track | Required output | Official retrieval score |
+| Hạng mục | Hạng mục con | Đầu ra yêu cầu | Điểm truy xuất chính thức |
 | --- | --- | --- | --- |
-| 1 · Temporal Grounded Retrieval | 1a Temporal Retrieval | Ranked documents per query | nDCG@10 |
-| 1 · Temporal Grounded Retrieval | 1b Step-wise Retrieval | Ranked documents per supplied step | Step-level nDCG@10 |
-| 2 · Conversational Retrieval | 2a Conversational Retrieval | Ranked passages per target turn | nDCG@10 |
-| 2 · Conversational Retrieval | 2b Gold-Passage Generation | Grounded answer | Five generation dimensions |
-| 2 · Conversational Retrieval | 2c Full Conversational RAG | Ranked passages + grounded answer | nDCG@10; generation reported alongside |
+| 1 · Truy xuất có căn cứ thời gian | 1a Truy xuất theo thời gian | Tài liệu được xếp hạng cho mỗi truy vấn | nDCG@10 |
+| 1 · Truy xuất có căn cứ thời gian | 1b Truy xuất từng bước | Tài liệu được xếp hạng cho mỗi bước được cung cấp | nDCG@10 cấp bước |
+| 2 · Truy xuất hội thoại | 2a Truy xuất hội thoại | Đoạn văn được xếp hạng cho mỗi lượt mục tiêu | nDCG@10 |
+| 2 · Truy xuất hội thoại | 2b Sinh câu trả lời từ đoạn văn chuẩn | Câu trả lời có căn cứ | Năm tiêu chí sinh văn bản |
+| 2 · Truy xuất hội thoại | 2c RAG hội thoại đầy đủ | Đoạn văn được xếp hạng + câu trả lời có căn cứ | nDCG@10; phần sinh văn bản được báo cáo song song |
 
-See the [full task definitions](https://datascienceuibk.github.io/RETECO/task.html)
-and [evaluation plan](https://datascienceuibk.github.io/RETECO/evaluation.html).
+Xem [định nghĩa nhiệm vụ đầy đủ](https://datascienceuibk.github.io/RETECO/task.html)
+và [kế hoạch đánh giá](https://datascienceuibk.github.io/RETECO/evaluation.html).
 
-## 📊 Training and development data
+## 📊 Dữ liệu huấn luyện và phát triển
 
-The official train/dev release is on Hugging Face:
+Bản phát hành train/dev chính thức có trên Hugging Face:
 **[DataScience-UIBK/RETECO-SemEval2027](https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027)**
 
 ```bash
 hf download DataScience-UIBK/RETECO-SemEval2027 --repo-type dataset --local-dir reteco_data
 ```
 
-One download contains everything needed for any sub-track: the full retrieval
-corpus of all 24 domains, task files, and TREC qrels for both splits.
+Một lần tải chứa mọi thứ cần thiết cho bất kỳ hạng mục con nào: toàn bộ kho ngữ liệu
+truy xuất của cả 24 lĩnh vực, các tệp nhiệm vụ và qrels TREC cho cả hai tập.
 
-| | train | dev |
+| | Huấn luyện | Phát triển |
 | --- | ---: | ---: |
-| Track 1 queries | 1,211 | 519 |
-| Track 1 steps | 2,762 | 1,214 |
-| Track 2 conversations | 496 | 211 |
-| Track 2 turns | 2,113 | 858 |
+| Truy vấn Hạng mục 1 | 1,211 | 519 |
+| Bước Hạng mục 1 | 2,762 | 1,214 |
+| Hội thoại Hạng mục 2 | 496 | 211 |
+| Lượt Hạng mục 2 | 2,113 | 858 |
 
-The split is 70/30 per domain with a fixed seed. The corpus is never split;
-Track 1 splits on the query (steps are nested inside their query record) and
-Track 2 splits on the whole conversation. Gold judgments ship for both splits —
-the SemEval test set is separate and never released.
+Tỷ lệ chia là 70/30 cho mỗi lĩnh vực với seed cố định. Kho ngữ liệu không bao giờ bị chia;
+Hạng mục 1 chia theo truy vấn (các bước nằm lồng trong bản ghi truy vấn của chúng) và
+Hạng mục 2 chia theo toàn bộ cuộc hội thoại. Nhãn đánh giá chuẩn được cung cấp cho cả hai tập —
+tập kiểm tra SemEval là riêng biệt và không bao giờ được phát hành.
 
-### 🧰 Starter kit
+### 🧰 Bộ công cụ khởi đầu
 
-[`starter_kit/`](starter_kit/) has the baselines, scorer, format checker, and the
-build script that produces the release from pinned upstream revisions, plus the
-deduplication script behind data v1.1 and its verifier.
+[`starter_kit/`](starter_kit/) chứa các hệ thống cơ sở, trình chấm điểm, trình kiểm tra định dạng và
+script xây dựng tạo ra bản phát hành từ các phiên bản gốc được cố định, cùng với
+script loại bỏ trùng lặp tạo ra dữ liệu v1.1 và script kiểm chứng của nó.
 
 ```bash
 cd starter_kit && pip install -r requirements.txt
 python official_baseline.py --data ../../reteco_data --splits train dev
 ```
 
-Reference BM25, nDCG@10, macro-averaged over domains:
+BM25 tham chiếu, nDCG@10, lấy trung bình macro theo các lĩnh vực:
 
-| Sub-track | Query given to the retriever | train | dev |
+| Hạng mục con | Truy vấn đưa vào bộ truy xuất | Huấn luyện | Phát triển |
 | --- | --- | ---: | ---: |
-| 1a Temporal retrieval | Whole query | 0.1075 | 0.1147 |
-| 1b Step-wise retrieval | Query + step instruction | 0.1024 | 0.1177 |
-| 2a Conversational retrieval | Current turn only | 0.1837 | 0.1827 |
-| 2a Conversational retrieval | Turn + conversation history | 0.4539 | 0.4379 |
+| 1a Truy xuất theo thời gian | Toàn bộ truy vấn | 0.1075 | 0.1147 |
+| 1b Truy xuất từng bước | Truy vấn + chỉ dẫn của bước | 0.1024 | 0.1177 |
+| 2a Truy xuất hội thoại | Chỉ lượt hiện tại | 0.1837 | 0.1827 |
+| 2a Truy xuất hội thoại | Lượt + lịch sử hội thoại | 0.4539 | 0.4379 |
 
-Track 1 numbers are on data v1.1. Per-domain numbers: [`starter_kit/BASELINE_RESULTS.md`](starter_kit/BASELINE_RESULTS.md).
+Số liệu Hạng mục 1 được đo trên dữ liệu v1.1. Số liệu theo từng lĩnh vực: [`starter_kit/BASELINE_RESULTS.md`](starter_kit/BASELINE_RESULTS.md).
 
-## 🔍 Sample data
+## 🔍 Dữ liệu mẫu
 
-The repository contains a compact, human-inspected package copied from the
-official TEMPO and RECOR releases:
+Kho mã chứa một gói nhỏ gọn, đã được con người kiểm tra, sao chép từ các
+bản phát hành chính thức của TEMPO và RECOR:
 
-- Track 1: 5 TEMPO examples, 26 supporting passages, and 26 positive qrels.
-- Track 2: 4 RECOR conversations containing 13 turns, 15 supporting passages,
-  and 32 positive qrels.
-- A manifest pins the source dataset revisions and selected record IDs.
+- Hạng mục 1: 5 ví dụ TEMPO, 26 đoạn văn hỗ trợ và 26 qrels dương.
+- Hạng mục 2: 4 hội thoại RECOR gồm 13 lượt, 15 đoạn văn hỗ trợ
+  và 32 qrels dương.
+- Một tệp kê khai cố định phiên bản của các bộ dữ liệu nguồn và ID của các bản ghi được chọn.
 
-[Inspect samples online](https://datascienceuibk.github.io/RETECO/samples.html) ·
-[Download the ZIP](https://datascienceuibk.github.io/RETECO/assets/downloads/RETECO_curated_sample_data.zip) ·
-[Browse source files](docs/sample_data/)
+[Xem mẫu trực tuyến](https://datascienceuibk.github.io/RETECO/samples.html) ·
+[Tải tệp ZIP](https://datascienceuibk.github.io/RETECO/assets/downloads/RETECO_curated_sample_data.zip) ·
+[Duyệt các tệp nguồn](docs/sample_data/)
 
-The sample is a format and feasibility demonstration—not a new benchmark split
-and not the hidden SemEval test set. It contains only referenced positive
-evidence, so retrieval systems must not be evaluated against the sample corpus
-alone.
+Dữ liệu mẫu là bản minh họa về định dạng và tính khả thi—không phải một phần chia mới của bộ đánh giá chuẩn
+và không phải tập kiểm tra ẩn của SemEval. Nó chỉ chứa bằng chứng dương được tham chiếu,
+nên không được đánh giá các hệ thống truy xuất chỉ trên kho ngữ liệu mẫu.
 
-## 🗂️ Data and corpora
+## 🗂️ Dữ liệu và kho ngữ liệu
 
-### Track 1: TEMPO
+### Hạng mục 1: TEMPO
 
-[TEMPO](https://github.com/tempo-bench/Tempo) contains 1,730 complex temporal
-queries, 3,976 decomposed retrieval steps, and 1,654,055 documents across 13
-independent domain corpora. RETECO v1.1 keeps one copy of each duplicated text,
-leaving 1,167,159 documents.
+[TEMPO](https://github.com/tempo-bench/Tempo) gồm 1,730 truy vấn thời gian phức tạp,
+3,976 bước truy xuất phân rã và 1,654,055 tài liệu thuộc 13 kho ngữ liệu
+lĩnh vực độc lập. RETECO v1.1 giữ một bản cho mỗi văn bản bị trùng lặp,
+còn lại 1,167,159 tài liệu.
 
-| Group | Domain | Queries | Corpus documents (TEMPO) | RETECO v1.1 |
+| Nhóm | Lĩnh vực | Truy vấn | Tài liệu kho ngữ liệu (TEMPO) | RETECO v1.1 |
 | --- | --- | ---: | ---: | ---: |
 | Blockchain | Bitcoin | 100 | 153,291 | 76,706 |
 | Blockchain | Cardano | 51 | 87,201 | 47,509 |
 | Blockchain | IOTA | 10 | 10,372 | 9,680 |
 | Blockchain | Monero | 65 | 85,093 | 53,955 |
-| Social Sciences | Economics | 83 | 93,756 | 74,692 |
-| Social Sciences | Law | 35 | 43,288 | 36,110 |
-| Social Sciences | Politics | 150 | 183,394 | 135,207 |
-| Social Sciences | History | 801 | 356,493 | 200,252 |
-| Applied | Quantitative Finance | 34 | 28,785 | 25,040 |
-| Applied | Travel | 100 | 177,677 | 158,771 |
-| Applied | Workplace | 36 | 64,659 | 43,584 |
-| Applied | Genealogy | 115 | 156,228 | 136,101 |
-| STEM | History of Science and Mathematics | 150 | 213,818 | 169,552 |
-| **Total** | **13 domains** | **1,730** | **1,654,055** | **1,167,159** |
+| Khoa học xã hội | Kinh tế học | 83 | 93,756 | 74,692 |
+| Khoa học xã hội | Luật | 35 | 43,288 | 36,110 |
+| Khoa học xã hội | Chính trị | 150 | 183,394 | 135,207 |
+| Khoa học xã hội | Lịch sử | 801 | 356,493 | 200,252 |
+| Ứng dụng | Tài chính định lượng | 34 | 28,785 | 25,040 |
+| Ứng dụng | Du lịch | 100 | 177,677 | 158,771 |
+| Ứng dụng | Nơi làm việc | 36 | 64,659 | 43,584 |
+| Ứng dụng | Phả hệ học | 115 | 156,228 | 136,101 |
+| STEM | Lịch sử khoa học và toán học | 150 | 213,818 | 169,552 |
+| **Tổng** | **13 lĩnh vực** | **1,730** | **1,654,055** | **1,167,159** |
 
-- Dataset: [tempo26/Tempo on Hugging Face](https://huggingface.co/datasets/tempo26/Tempo)
-- Code and baselines: [tempo-bench/Tempo](https://github.com/tempo-bench/Tempo)
-- Paper: [arXiv:2601.09523](https://arxiv.org/abs/2601.09523)
+- Bộ dữ liệu: [tempo26/Tempo trên Hugging Face](https://huggingface.co/datasets/tempo26/Tempo)
+- Mã nguồn và hệ thống cơ sở: [tempo-bench/Tempo](https://github.com/tempo-bench/Tempo)
+- Bài báo: [arXiv:2601.09523](https://arxiv.org/abs/2601.09523)
 
-### Track 2: RECOR
+### Hạng mục 2: RECOR
 
-[RECOR](https://github.com/RECOR-Benchmark/RECOR) contains 707 conversations,
-2,971 target turns, and 507,141 documents across 11 domain corpora. Six domains
-come from BRIGHT and five from StackExchange.
+[RECOR](https://github.com/RECOR-Benchmark/RECOR) gồm 707 hội thoại,
+2,971 lượt mục tiêu và 507,141 tài liệu thuộc 11 kho ngữ liệu lĩnh vực. Sáu lĩnh vực
+đến từ BRIGHT và năm lĩnh vực từ StackExchange.
 
-| Source | Domain | Conversations | Turns | Corpus documents |
+| Nguồn | Lĩnh vực | Hội thoại | Lượt | Tài liệu kho ngữ liệu |
 | --- | --- | ---: | ---: | ---: |
-| BRIGHT | Biology | 85 | 362 | 57,359 |
-| BRIGHT | Earth Science | 98 | 454 | 121,249 |
-| BRIGHT | Economics | 74 | 288 | 50,220 |
-| BRIGHT | Psychology | 84 | 333 | 52,835 |
-| BRIGHT | Robotics | 68 | 259 | 61,961 |
-| BRIGHT | Sustainable Living | 78 | 319 | 60,792 |
-| StackExchange | Drones | 37 | 142 | 16,381 |
-| StackExchange | Hardware | 46 | 188 | 26,308 |
-| StackExchange | Law | 50 | 230 | 20,027 |
-| StackExchange | Medical Sciences | 44 | 183 | 23,297 |
-| StackExchange | Politics | 43 | 213 | 16,712 |
-| **Total** | **11 domains** | **707** | **2,971** | **507,141** |
+| BRIGHT | Sinh học | 85 | 362 | 57,359 |
+| BRIGHT | Khoa học Trái Đất | 98 | 454 | 121,249 |
+| BRIGHT | Kinh tế học | 74 | 288 | 50,220 |
+| BRIGHT | Tâm lý học | 84 | 333 | 52,835 |
+| BRIGHT | Robot học | 68 | 259 | 61,961 |
+| BRIGHT | Lối sống bền vững | 78 | 319 | 60,792 |
+| StackExchange | Máy bay không người lái | 37 | 142 | 16,381 |
+| StackExchange | Phần cứng | 46 | 188 | 26,308 |
+| StackExchange | Luật | 50 | 230 | 20,027 |
+| StackExchange | Khoa học y khoa | 44 | 183 | 23,297 |
+| StackExchange | Chính trị | 43 | 213 | 16,712 |
+| **Tổng** | **11 lĩnh vực** | **707** | **2,971** | **507,141** |
 
-- Dataset: [RECOR-Benchmark/RECOR on Hugging Face](https://huggingface.co/datasets/RECOR-Benchmark/RECOR)
-- Code and baselines: [RECOR-Benchmark/RECOR](https://github.com/RECOR-Benchmark/RECOR)
-- Published paper: [ACL Anthology 2026.findings-acl.129](https://aclanthology.org/2026.findings-acl.129/)
+- Bộ dữ liệu: [RECOR-Benchmark/RECOR trên Hugging Face](https://huggingface.co/datasets/RECOR-Benchmark/RECOR)
+- Mã nguồn và hệ thống cơ sở: [RECOR-Benchmark/RECOR](https://github.com/RECOR-Benchmark/RECOR)
+- Bài báo đã công bố: [ACL Anthology 2026.findings-acl.129](https://aclanthology.org/2026.findings-acl.129/)
 
-These are the upstream sources. The RETECO release above packages them into
-train/dev splits with qrels. Final SemEval scoring uses a separate,
-never-publicly-released test set with private gold judgments.
+Đây là các nguồn gốc. Bản phát hành RETECO ở trên đóng gói chúng thành
+các tập train/dev kèm qrels. Việc chấm điểm SemEval cuối cùng dùng một tập kiểm tra riêng,
+chưa từng được công bố công khai, với nhãn đánh giá chuẩn được giữ kín.
 
-## 📄 Papers
+## 📄 Bài báo
 
 ### TEMPO
 
 **TEMPO: A Realistic Multi-Domain Benchmark for Temporal Reasoning-Intensive
 Retrieval**  
-Abdelrahman Abdallah, Mohammed Ali, Muhammad Abdul-Mageed, and Adam Jatowt.  
-arXiv:2601.09523, 2026. [Paper](https://arxiv.org/abs/2601.09523)
+Abdelrahman Abdallah, Mohammed Ali, Muhammad Abdul-Mageed và Adam Jatowt.  
+arXiv:2601.09523, 2026. [Bài báo](https://arxiv.org/abs/2601.09523)
 
 ```bibtex
 @article{abdallah2026tempo,
@@ -231,10 +230,10 @@ arXiv:2601.09523, 2026. [Paper](https://arxiv.org/abs/2601.09523)
 ### RECOR
 
 **RECOR: Reasoning-focused Multi-turn Conversational Retrieval Benchmark**  
-Mohammed Ali, Abdelrahman Abdallah, Amit Agarwal, Hitesh Laxmichand Patel, and
+Mohammed Ali, Abdelrahman Abdallah, Amit Agarwal, Hitesh Laxmichand Patel và
 Adam Jatowt.  
-Findings of ACL 2026, pages 2688–2723.
-[Paper](https://aclanthology.org/2026.findings-acl.129/) ·
+Findings of ACL 2026, trang 2688–2723.
+[Bài báo](https://aclanthology.org/2026.findings-acl.129/) ·
 [DOI](https://doi.org/10.18653/v1/2026.findings-acl.129)
 
 ```bibtex
@@ -250,29 +249,29 @@ Findings of ACL 2026, pages 2688–2723.
 }
 ```
 
-Both records are available in [CITATIONS.bib](CITATIONS.bib). The official
-RETECO task-paper citation will be added after the SemEval-2027 task description
-is published.
+Cả hai bản ghi đều có trong [CITATIONS.bib](CITATIONS.bib). Trích dẫn bài báo nhiệm vụ
+chính thức của RETECO sẽ được bổ sung sau khi bài mô tả nhiệm vụ SemEval-2027
+được công bố.
 
-## 🗺️ Repository map
+## 🗺️ Sơ đồ kho mã
 
 ```text
 RETECO/
-├── docs/                         # GitHub Pages website
+├── docs/                         # Trang web GitHub Pages
 │   ├── index.html
 │   ├── task.html
-│   ├── data.html                 # Detailed per-domain corpora
-│   ├── samples.html              # Human-readable examples
+│   ├── data.html                 # Chi tiết kho ngữ liệu theo từng lĩnh vực
+│   ├── samples.html              # Ví dụ dễ đọc cho con người
 │   ├── evaluation.html
-│   ├── papers.html               # Proposal, papers, citations
+│   ├── papers.html               # Đề xuất, bài báo, trích dẫn
 │   ├── participate.html
 │   ├── timeline.html
-│   ├── sample_data/              # Curated machine-readable sample
+│   ├── sample_data/              # Dữ liệu mẫu tuyển chọn, máy đọc được
 │   └── assets/
 │       ├── downloads/
 │       └── papers/
-├── starter_kit/                  # Baselines, scorer, format checker, build script
-├── .github/workflows/            # Pages deployment
+├── starter_kit/                  # Hệ thống cơ sở, trình chấm điểm, trình kiểm tra định dạng, script xây dựng
+├── .github/workflows/            # Triển khai Pages
 ├── CITATIONS.bib
 ├── CONTRIBUTING.md
 ├── CODE_OF_CONDUCT.md
@@ -280,54 +279,54 @@ RETECO/
 └── README.md
 ```
 
-Format checkers, local scorers, and starter baselines are in
-[`starter_kit/`](starter_kit/). Sample submissions will be added when the
-competition-platform interface is frozen.
+Trình kiểm tra định dạng, trình chấm điểm cục bộ và các hệ thống cơ sở khởi đầu nằm trong
+[`starter_kit/`](starter_kit/). Các bài nộp mẫu sẽ được bổ sung khi giao diện của
+nền tảng thi đấu được chốt.
 
-## 💻 Local website preview
+## 💻 Xem trước trang web trên máy
 
-The website is dependency-free:
+Trang web không có phụ thuộc nào:
 
 ```bash
 python -m http.server 8000 --directory docs
 ```
 
-Then open `http://localhost:8000/`.
+Sau đó mở `http://localhost:8000/`.
 
-## 🌐 GitHub Pages deployment
+## 🌐 Triển khai GitHub Pages
 
-The included workflow publishes `docs/`. In repository settings, choose
-**GitHub Actions** as the Pages source. The site URL is:
+Workflow đi kèm sẽ xuất bản thư mục `docs/`. Trong phần cài đặt của kho mã, hãy chọn
+**GitHub Actions** làm nguồn cho Pages. URL của trang là:
 
 ```text
 https://datascienceuibk.github.io/RETECO/
 ```
 
-## 📅 Important dates
+## 📅 Các mốc thời gian quan trọng
 
-- Sample data: August 8, 2026
-- Training data: **released August 30, 2026**
-- Evaluation: January 10–31, 2027
-- Paper and workshop dates: tentative; see the
-  [official SemEval-2027 calendar](https://semeval.github.io/SemEval2027/)
+- Dữ liệu mẫu: 08/08/2026
+- Dữ liệu huấn luyện: **đã phát hành ngày 30/08/2026**
+- Đánh giá: 10–31/01/2027
+- Mốc bài báo và hội thảo: dự kiến; xem
+  [lịch chính thức của SemEval-2027](https://semeval.github.io/SemEval2027/)
 
-## 👥 Organizers
+## 👥 Ban tổ chức
 
-Abdelrahman Abdallah, Mohammed Ali, Muhammad Abdul-Mageed, Kevin Duh, and
+Abdelrahman Abdallah, Mohammed Ali, Muhammad Abdul-Mageed, Kevin Duh và
 Adam Jatowt.
 
-For task questions, contact
+Nếu có câu hỏi về nhiệm vụ, hãy liên hệ
 [Abdelrahman Abdallah](mailto:abdelrahman.abdallah@uibk.ac.at).
 
-## ⚖️ License
+## ⚖️ Giấy phép
 
-The data release carries two licenses. **Corpus and question/answer text is
-CC BY-SA 4.0** — all passage text originates from Stack Exchange, whose user
-contributions are licensed CC BY-SA, which is share-alike and cannot be
-relicensed. **RETECO annotations (split assignments, TREC qrels,
-`split_manifest.json`) are CC BY 4.0.** Attribution for the underlying content
-remains with the original Stack Exchange authors.
+Bản phát hành dữ liệu áp dụng hai giấy phép. **Kho ngữ liệu và văn bản câu hỏi/câu trả lời
+theo giấy phép CC BY-SA 4.0** — toàn bộ văn bản đoạn văn có nguồn gốc từ Stack Exchange, nơi các
+đóng góp của người dùng được cấp phép CC BY-SA, vốn là giấy phép chia sẻ tương tự (share-alike) và không thể
+cấp phép lại theo điều khoản khác. **Chú thích của RETECO (phân chia tập, qrels TREC,
+`split_manifest.json`) theo giấy phép CC BY 4.0.** Quyền ghi công cho nội dung gốc
+vẫn thuộc về các tác giả ban đầu trên Stack Exchange.
 
-Existing benchmark data and code may use different licenses; consult the license
-attached to each resource. A repository-level software license will be added
-before the first tagged RETECO code release.
+Dữ liệu và mã nguồn của các bộ đánh giá chuẩn hiện có có thể dùng giấy phép khác; hãy tham khảo giấy phép
+đi kèm với từng tài nguyên. Một giấy phép phần mềm cho toàn bộ kho mã sẽ được bổ sung
+trước bản phát hành mã nguồn RETECO đầu tiên có gắn thẻ (tag).

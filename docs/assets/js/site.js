@@ -43,15 +43,15 @@ document.querySelectorAll('[data-copy-target]').forEach((button) => {
     const original = button.textContent;
     try {
       await navigator.clipboard.writeText(target.textContent.trim());
-      button.textContent = 'Copied';
+      button.textContent = 'Đã sao chép';
     } catch (_) {
-      button.textContent = 'Select text to copy';
+      button.textContent = 'Hãy chọn văn bản để sao chép';
     }
     window.setTimeout(() => { button.textContent = original; }, 1800);
   });
 });
 
-// Load the visitor counter on every page without rendering its map widget.
+// Tải bộ đếm lượt truy cập trên mọi trang mà không hiển thị tiện ích bản đồ của nó.
 if (!document.getElementById('mapmyvisitors')) {
   const visitorCounter = document.createElement('div');
   visitorCounter.hidden = true;
@@ -66,7 +66,7 @@ if (!document.getElementById('mapmyvisitors')) {
   document.body.appendChild(visitorCounter);
 }
 
-// Load Cloudflare Web Analytics on every page. The beacon has no visible UI.
+// Tải Cloudflare Web Analytics trên mọi trang. Beacon này không có giao diện hiển thị.
 if (!document.querySelector('script[data-cf-beacon]')) {
   const cloudflareBeacon = document.createElement('script');
   cloudflareBeacon.type = 'module';

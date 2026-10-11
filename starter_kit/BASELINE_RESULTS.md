@@ -1,33 +1,33 @@
-# RETECO official BM25 baseline — train and dev
+# Hệ thống cơ sở BM25 chính thức của RETECO — train và dev
 
-Retrieval: verbatim `retrieval_bm25` from the upstream TEMPO and RECOR repos
-(pyserini Lucene analyzer + gensim `LuceneBM25Model`, k1=0.9, b=0.4, top-1000).
-Scoring: upstream `calculate_retrieval_metrics` — `pytrec_eval`, `ndcg_cut_10`.
-Macro-averaged over domains, as both papers do.
+Truy xuất: nguyên văn hàm `retrieval_bm25` từ các kho mã TEMPO và RECOR gốc
+(bộ phân tích Lucene của pyserini + `LuceneBM25Model` của gensim, k1=0.9, b=0.4, top-1000).
+Chấm điểm: hàm `calculate_retrieval_metrics` gốc — `pytrec_eval`, `ndcg_cut_10`.
+Lấy trung bình macro theo các lĩnh vực, giống như cả hai bài báo.
 
-Track 1 numbers are measured on **data v1.1** (Track 1 corpora deduplicated,
-25 Sep 2026). On v1.0 the Track 1 macro averages were 1a 0.0879 / 0.0967 and
-1b 0.0852 / 0.1063 (train / dev). Track 2 data did not change.
+Số liệu Hạng mục 1 được đo trên **dữ liệu v1.1** (kho ngữ liệu Hạng mục 1 đã loại bỏ trùng lặp,
+25/09/2026). Trên v1.0, trung bình macro của Hạng mục 1 là 1a 0.0879 / 0.0967 và
+1b 0.0852 / 0.1063 (train / dev). Dữ liệu Hạng mục 2 không thay đổi.
 
-## Macro-average nDCG@10
+## nDCG@10 trung bình macro
 
-| Sub-track | train | dev | published (full set) |
+| Hạng mục con | train | dev | đã công bố (toàn bộ tập) |
 | --- | ---: | ---: | ---: |
-| 1a · whole-query retrieval | 0.1075 | 0.1147 | 0.108 (TEMPO paper) |
-| 1b · step-wise retrieval | 0.1024 | 0.1177 | not reported |
-| 2a · Base (current turn only) | 0.1837 | 0.1827 | 0.185 (RECOR Table 3) |
-| 2a · +History | 0.4539 | 0.4379 | 0.446 (RECOR Table 3) |
+| 1a · truy xuất toàn bộ truy vấn | 0.1075 | 0.1147 | 0.108 (bài báo TEMPO) |
+| 1b · truy xuất từng bước | 0.1024 | 0.1177 | không báo cáo |
+| 2a · Base (chỉ lượt hiện tại) | 0.1837 | 0.1827 | 0.185 (RECOR, Bảng 3) |
+| 2a · +History (kèm lịch sử hội thoại) | 0.4539 | 0.4379 | 0.446 (RECOR, Bảng 3) |
 
-Our splits cover 70% / 30% of each domain, so exact equality with the
-full-set published figures is not expected; Track 2 reproduces both published
-BM25 configurations to within 0.003. The v1.1 Track 1 corpora are also
-deduplicated, so they are smaller than the corpora used in the TEMPO paper.
+Các tập của chúng tôi bao gồm 70% / 30% của mỗi lĩnh vực, nên không kỳ vọng kết quả bằng chính xác
+các con số đã công bố trên toàn bộ tập; Hạng mục 2 tái lập được cả hai cấu hình
+BM25 đã công bố với sai lệch trong phạm vi 0.003. Kho ngữ liệu Hạng mục 1 bản v1.1 cũng đã được
+loại bỏ trùng lặp, nên nhỏ hơn kho ngữ liệu được dùng trong bài báo TEMPO.
 
-## Per-domain nDCG@10
+## nDCG@10 theo từng lĩnh vực
 
-### Track 1 · TEMPO (data v1.1)
+### Hạng mục 1 · TEMPO (dữ liệu v1.1)
 
-| Domain | 1a train | 1a dev | 1b train | 1b dev |
+| Lĩnh vực | 1a train | 1a dev | 1b train | 1b dev |
 | --- | ---: | ---: | ---: | ---: |
 | bitcoin | 0.0856 | 0.0370 | 0.0888 | 0.0299 |
 | cardano | 0.1848 | 0.1027 | 0.1655 | 0.0627 |
@@ -43,9 +43,9 @@ deduplicated, so they are smaller than the corpora used in the TEMPO paper.
 | travel | 0.0506 | 0.0442 | 0.0423 | 0.0645 |
 | workplace | 0.0798 | 0.0230 | 0.1162 | 0.0297 |
 
-### Track 2 · RECOR
+### Hạng mục 2 · RECOR
 
-| Domain | 2a train | 2a dev | 2a_hist train | 2a_hist dev |
+| Lĩnh vực | 2a train | 2a dev | 2a_hist train | 2a_hist dev |
 | --- | ---: | ---: | ---: | ---: |
 | biology | 0.2250 | 0.2034 | 0.6369 | 0.6065 |
 | drones | 0.1400 | 0.1695 | 0.3162 | 0.2954 |

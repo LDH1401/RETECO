@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 """Kiểm tra độc lập đầu ra của dedup_track1.py so với bản phát hành gốc.
 
-Đọc cả hai bản phát hành từ đĩa và kiểm tra, cho từng lĩnh vực của Hạng mục 1:
+Đọc cả hai bản phát hành từ đĩa và kiểm tra, cho từng lĩnh vực (domain) của Track 1:
   corpus   - ID mới là duy nhất; không có hai tài liệu mới nào có cùng văn bản; mọi tài liệu cũ
              hoặc được giữ nguyên từng byte, hoặc được ánh xạ tới một tài liệu được giữ lại có cùng văn bản
   qrels    - qrels mới == qrels cũ sau khi ánh xạ ID (các bản trùng được gộp);
-             cùng tập chủ đề; cùng số lượng văn bản chuẩn khác nhau cho mỗi chủ đề
-  gold     - mọi ID chuẩn được ánh xạ đều trỏ tới một tài liệu có cùng văn bản
+             cùng tập topic; cùng số lượng gold text khác nhau cho mỗi topic
+  gold     - mọi gold ID được ánh xạ đều trỏ tới một tài liệu có cùng văn bản
   task     - examples/steps/guidance bằng các bản ghi cũ sau khi ánh xạ ID;
-             mọi ID mà chúng nêu đều tồn tại trong kho ngữ liệu mới
-  splits   - ID và thứ tự bản ghi không đổi trong mọi tệp nhiệm vụ
-Hạng mục 2 được kiểm tra để đảm bảo giống hệt đến từng byte.
+             mọi ID mà chúng nêu đều tồn tại trong corpus mới
+  splits   - ID và thứ tự bản ghi không đổi trong mọi tệp task
+Track 2 được kiểm tra để đảm bảo giống hệt đến từng byte.
 
     python verify_dedup_track1.py --old reteco_data --new reteco_data_v1.1
 """
@@ -106,7 +106,7 @@ def check_domain(args):
     new_lines, new_keys = corpus(os.path.join(n, "documents.jsonl"))
     m = json.load(open(os.path.join(n, "duplicate_map.json"), encoding="utf-8"))
 
-    # kho ngữ liệu
+    # corpus
     if len(set(new_keys.values())) != len(new_keys):
         errs.append("new corpus still contains duplicate texts")
     if len(new_keys) != len(set(old_keys.values())):
@@ -125,7 +125,7 @@ def check_domain(args):
             errs.append(f"doc mapped to missing/different text: {i} -> {m[i]}")
             break
 
-    # qrels + dữ liệu chuẩn
+    # qrels + gold
     gold_pairs = 0
     for name in ("qrels", "qrels_steps"):
         for split in ("train", "dev"):
@@ -142,7 +142,7 @@ def check_domain(args):
                 elif len({old_keys[d] for d in docs}) != len({new_keys[d] for d in nq.get(t, ())}):
                     errs.append(f"{name}_{split}/{t}: distinct gold text count changed")
 
-    # các tệp nhiệm vụ
+    # các tệp task
     universe = set(old_lines)
     new_ids = set(new_lines)
     for name in ("examples", "steps", "guidance"):
@@ -196,7 +196,7 @@ def main():
                 print("     ", e)
             ok &= not errs
 
-    # Hạng mục 2 phải được giữ nguyên
+    # Track 2 phải được giữ nguyên
     o2, n2 = os.path.join(args.old, "track2_recor"), os.path.join(args.new, "track2_recor")
     for dom in sorted(os.listdir(o2)):
         files = sorted(os.listdir(os.path.join(o2, dom)))

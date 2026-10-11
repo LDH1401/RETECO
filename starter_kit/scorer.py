@@ -1,20 +1,20 @@
 #!/usr/bin/env python3
-"""Trình chấm điểm chính thức của RETECO (thuần Python, không có phụ thuộc).
+"""Scorer chính thức của RETECO (thuần Python, không có dependency).
 
-Chấm điểm một tệp kết quả chạy TREC so với qrels và báo cáo chỉ số chính thức cùng
-các chỉ số chẩn đoán riêng của từng hạng mục.
+Chấm điểm một run file TREC so với qrels và báo cáo metric chính thức cùng
+các chỉ số chẩn đoán (diagnostics) riêng của từng track.
 
-HẠNG MỤC 1 (Truy xuất có căn cứ thời gian):
+TRACK 1 (Temporal Grounded Retrieval):
     python scorer.py --track 1 --run run.txt --qrels qrels.txt [--steps steps.jsonl]
     -> nDCG@10 (chính thức) + TP@10, TR@10, TC@10, NDCG|FC@10
        (TC / NDCG|FC cần --steps, tệp định nghĩa các giai đoạn thời gian cần thiết.)
 
-HẠNG MỤC 2 (Truy xuất hội thoại đòi hỏi suy luận chuyên sâu):
+TRACK 2 (Reasoning-Intensive Conversational Retrieval):
     python scorer.py --track 2 --run run.txt --qrels qrels.txt
-    -> nDCG@10 (chính thức) tổng thể, cùng phân tích theo vị trí lượt (T1..T5+).
+    -> nDCG@10 (chính thức) tổng thể, cùng phân tích theo vị trí lượt (turn) (T1..T5+).
 
-Tệp kết quả chạy:  qid  Q0  docid  rank  score  tag
-Qrels:             qid  0   docid  rel
+Run file:  qid  Q0  docid  rank  score  tag
+Qrels:     qid  0   docid  rel
 """
 import argparse
 import json
@@ -54,7 +54,7 @@ def load_run(path):
 def load_steps(path):
     """qid -> danh sách các tập gold-id (mỗi tập ứng với một giai đoạn/bước cần thiết).
 
-    steps_*.jsonl chứa một bản ghi cho mỗi truy vấn, với các bước lồng bên dưới.
+    steps_*.jsonl chứa một bản ghi cho mỗi truy vấn (query), với các bước lồng bên dưới.
     """
     periods = defaultdict(list)
     with open(path) as f:
@@ -68,7 +68,7 @@ def load_steps(path):
 
 
 def turn_bucket(qid):
-    """ID chủ đề RECOR có dạng 'ex_3025_turn_3' -> nhóm 'T3' (từ lượt 5 trở đi gộp vào T5+)."""
+    """Topic id của RECOR có dạng 'ex_3025_turn_3' -> nhóm 'T3' (từ lượt 5 trở đi gộp vào T5+)."""
     if "_turn_" in qid:
         try:
             t = int(qid.rsplit("_turn_", 1)[1])
@@ -83,7 +83,7 @@ def main():
     ap.add_argument("--track", type=int, choices=[1, 2], required=True)
     ap.add_argument("--run", required=True)
     ap.add_argument("--qrels", required=True)
-    ap.add_argument("--steps", help="Hạng mục 1: steps.jsonl định nghĩa các giai đoạn cần thiết")
+    ap.add_argument("--steps", help="Track 1: steps.jsonl định nghĩa các giai đoạn cần thiết")
     ap.add_argument("--k", type=int, default=10)
     ap.add_argument("--json", action="store_true", help="xuất JSON thay vì văn bản")
     args = ap.parse_args()

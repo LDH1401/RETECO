@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""Hệ thống cơ sở khởi đầu BM25 của RETECO -- tạo một tệp kết quả chạy TREC cho một lĩnh vực.
+"""Baseline starter BM25 của RETECO -- tạo một run file TREC cho một lĩnh vực (domain).
 
-HẠNG MỤC 1 (theo truy vấn, và theo bước cho Hạng mục con 1b):
+TRACK 1 (theo truy vấn (query), và theo bước cho Sub-Track 1b):
     python bm25_baseline.py --track 1 \
         --corpus documents.jsonl --queries examples.jsonl --out run.txt
-    # kết quả chạy cấp bước cho Hạng mục con 1b:
+    # run cấp bước (step-level) cho Sub-Track 1b:
     python bm25_baseline.py --track 1 --level step \
         --corpus documents.jsonl --queries steps.jsonl --out run_steps.txt
 
-HẠNG MỤC 2 (theo lượt; --strategy chọn cách đưa ngữ cảnh hội thoại vào truy vấn):
+TRACK 2 (theo lượt (turn); --strategy chọn cách đưa ngữ cảnh hội thoại vào truy vấn):
     python bm25_baseline.py --track 2 --strategy current \
         --corpus earthscience_documents.jsonl --queries earthscience_benchmark.json --out run.txt
     python bm25_baseline.py --track 2 --strategy history ...   # thêm lịch sử hội thoại vào trước truy vấn

@@ -1,31 +1,31 @@
-# Hệ thống cơ sở BM25 chính thức của RETECO — train và dev
+# Baseline BM25 chính thức của RETECO — train và dev
 
-Truy xuất: nguyên văn hàm `retrieval_bm25` từ các kho mã TEMPO và RECOR gốc
-(bộ phân tích Lucene của pyserini + `LuceneBM25Model` của gensim, k1=0.9, b=0.4, top-1000).
-Chấm điểm: hàm `calculate_retrieval_metrics` gốc — `pytrec_eval`, `ndcg_cut_10`.
-Lấy trung bình macro theo các lĩnh vực, giống như cả hai bài báo.
+Truy xuất (retrieval): nguyên văn hàm `retrieval_bm25` từ các repo TEMPO và RECOR upstream
+(Lucene analyzer của pyserini + `LuceneBM25Model` của gensim, k1=0.9, b=0.4, top-1000).
+Chấm điểm: hàm `calculate_retrieval_metrics` của upstream — `pytrec_eval`, `ndcg_cut_10`.
+Lấy trung bình macro (macro-average) theo các lĩnh vực (domain), giống như cả hai bài báo.
 
-Số liệu Hạng mục 1 được đo trên **dữ liệu v1.1** (kho ngữ liệu Hạng mục 1 đã loại bỏ trùng lặp,
-25/09/2026). Trên v1.0, trung bình macro của Hạng mục 1 là 1a 0.0879 / 0.0967 và
-1b 0.0852 / 0.1063 (train / dev). Dữ liệu Hạng mục 2 không thay đổi.
+Số liệu Track 1 được đo trên **dữ liệu v1.1** (corpus Track 1 đã loại bỏ trùng lặp,
+25/09/2026). Trên v1.0, trung bình macro của Track 1 là 1a 0.0879 / 0.0967 và
+1b 0.0852 / 0.1063 (train / dev). Dữ liệu Track 2 không thay đổi.
 
 ## nDCG@10 trung bình macro
 
-| Hạng mục con | train | dev | đã công bố (toàn bộ tập) |
+| Sub-track | train | dev | đã công bố (toàn bộ tập) |
 | --- | ---: | ---: | ---: |
-| 1a · truy xuất toàn bộ truy vấn | 0.1075 | 0.1147 | 0.108 (bài báo TEMPO) |
-| 1b · truy xuất từng bước | 0.1024 | 0.1177 | không báo cáo |
+| 1a · truy xuất toàn bộ truy vấn (whole-query retrieval) | 0.1075 | 0.1147 | 0.108 (bài báo TEMPO) |
+| 1b · step-wise retrieval | 0.1024 | 0.1177 | không báo cáo |
 | 2a · Base (chỉ lượt hiện tại) | 0.1837 | 0.1827 | 0.185 (RECOR, Bảng 3) |
 | 2a · +History (kèm lịch sử hội thoại) | 0.4539 | 0.4379 | 0.446 (RECOR, Bảng 3) |
 
-Các tập của chúng tôi bao gồm 70% / 30% của mỗi lĩnh vực, nên không kỳ vọng kết quả bằng chính xác
-các con số đã công bố trên toàn bộ tập; Hạng mục 2 tái lập được cả hai cấu hình
-BM25 đã công bố với sai lệch trong phạm vi 0.003. Kho ngữ liệu Hạng mục 1 bản v1.1 cũng đã được
-loại bỏ trùng lặp, nên nhỏ hơn kho ngữ liệu được dùng trong bài báo TEMPO.
+Các split của chúng tôi bao gồm 70% / 30% của mỗi lĩnh vực, nên không kỳ vọng kết quả bằng chính xác
+các con số đã công bố trên toàn bộ tập; Track 2 tái lập được cả hai cấu hình
+BM25 đã công bố với sai lệch trong phạm vi 0.003. Corpus Track 1 bản v1.1 cũng đã được
+loại bỏ trùng lặp, nên nhỏ hơn corpus được dùng trong bài báo TEMPO.
 
 ## nDCG@10 theo từng lĩnh vực
 
-### Hạng mục 1 · TEMPO (dữ liệu v1.1)
+### Track 1 · TEMPO (dữ liệu v1.1)
 
 | Lĩnh vực | 1a train | 1a dev | 1b train | 1b dev |
 | --- | ---: | ---: | ---: | ---: |
@@ -43,7 +43,7 @@ loại bỏ trùng lặp, nên nhỏ hơn kho ngữ liệu được dùng trong 
 | travel | 0.0506 | 0.0442 | 0.0423 | 0.0645 |
 | workplace | 0.0798 | 0.0230 | 0.1162 | 0.0297 |
 
-### Hạng mục 2 · RECOR
+### Track 2 · RECOR
 
 | Lĩnh vực | 2a train | 2a dev | 2a_hist train | 2a_hist dev |
 | --- | ---: | ---: | ---: | ---: |

@@ -1,38 +1,38 @@
-"""Các chỉ số đánh giá chính thức của RETECO (thuần Python, không có phụ thuộc).
+"""Các metric đánh giá chính thức của RETECO (thuần Python, không có dependency).
 
-Cài đặt các chỉ số được dùng cho cả hai hạng mục của RETECO:
+Cài đặt các metric được dùng cho cả hai track của RETECO:
 
-  * nDCG@k          -- chỉ số chính thức của bảng xếp hạng (cả hai hạng mục)
-  * Temporal Precision@k (TP)   -- độ chính xác có trọng số theo vị trí của các tài liệu liên quan về thời gian
+  * nDCG@k          -- metric chính thức của leaderboard (cả hai track)
+  * Temporal Precision@k (TP)   -- precision có trọng số theo vị trí của các tài liệu liên quan về thời gian
   * Temporal Relevance@k (TR)   -- tỷ lệ trong top-k được đánh giá là liên quan về thời gian
-  * Temporal Coverage@k  (TC)   -- tỷ lệ các giai đoạn thời gian cần thiết của truy vấn được bao phủ
+  * Temporal Coverage@k  (TC)   -- tỷ lệ các giai đoạn thời gian cần thiết của truy vấn (query) được bao phủ
   * NDCG|FC@k       -- nDCG@k trên các truy vấn đạt độ bao phủ thời gian đầy đủ (TC==1)
 
-Trên tập kiểm tra ẨN, mức độ liên quan về thời gian và độ bao phủ giai đoạn được gán bởi
-LLM làm giám khảo (prompt được ghi lại + hiệu chỉnh bằng các trường hợp chuẩn + con người kiểm tra xác suất).
-Với trình chấm điểm thí điểm NGOẠI TUYẾN ở đây, nhãn liên quan chuẩn trong `qrels` được dùng
-làm nguồn đối chiếu (oracle) cho mức độ liên quan về thời gian, và các tệp bước của từng truy vấn
-cung cấp tập các giai đoạn thời gian cần thiết (một bước == một giai đoạn cần thiết). Cách này mô phỏng
-việc trình chấm điểm trên tập kiểm tra ẩn sẽ sử dụng nhãn của giám khảo, nên cùng một luồng mã được dùng lại.
+Trên tập test ẨN, mức độ liên quan (relevance) về thời gian và độ bao phủ giai đoạn được gán bởi
+LLM-as-judge (prompt được ghi lại + calibration bằng các golden case + con người spot-check).
+Với scorer pilot NGOẠI TUYẾN (offline) ở đây, các gold relevance label trong `qrels` được dùng
+làm oracle cho mức độ liên quan về thời gian, và các tệp bước của từng truy vấn cung cấp
+tập các giai đoạn thời gian cần thiết (một bước == một giai đoạn cần thiết). Cách này mô phỏng
+việc scorer trên tập test ẩn sẽ sử dụng label của judge, nên cùng một luồng mã được dùng lại.
 """
 from math import log2
 
 
 # ------------------------------------------------------------- DCG cốt lõi ----
 def _dcg(rels):
-    """Độ lợi tích lũy có chiết khấu (DCG) của một danh sách có thứ tự các mức liên quan."""
+    """Discounted cumulative gain của một danh sách có thứ tự các mức liên quan (relevance grade)."""
     return sum(r / log2(i + 2) for i, r in enumerate(rels))  # i=0 -> 1/log2(2)=1
 
 
 def ndcg_at_k(ranked_docids, gold, k=10):
-    """nDCG@k nhị phân. `gold` là set/dict các id tài liệu liên quan (mức 1)."""
+    """nDCG@k nhị phân (binary). `gold` là set/dict các doc id liên quan (mức 1)."""
     grades = [1.0 if d in gold else 0.0 for d in ranked_docids[:k]]
     ideal = sorted([1.0] * min(len(gold), k), reverse=True)
     idcg = _dcg(ideal)
     return (_dcg(grades) / idcg) if idcg > 0 else 0.0
 
 
-# ------------------------------------------------ các chỉ số thời gian -------
+# ------------------------------------------------------ các metric thời gian -------
 def temporal_relevance_at_k(ranked_docids, temporally_relevant, k=10):
     """TR@k: tỷ lệ trong top-k liên quan về thời gian."""
     top = ranked_docids[:k]
@@ -42,7 +42,7 @@ def temporal_relevance_at_k(ranked_docids, temporally_relevant, k=10):
 
 
 def temporal_precision_at_k(ranked_docids, temporally_relevant, k=10):
-    """TP@k: độ chính xác có trọng số theo vị trí (thưởng cho việc xếp tài liệu liên quan lên sớm hơn).
+    """TP@k: precision có trọng số theo vị trí (thưởng cho việc xếp tài liệu liên quan lên sớm hơn).
 
     TP@k = sum_i w_i * rel_i / sum_i w_i ,  w_i = 1/log2(i+1), i=1..k
     """

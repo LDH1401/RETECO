@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
-# Bộ công cụ khởi đầu RETECO
+# Starter kit của RETECO
 #
-# Cốt lõi (xây dựng bản phát hành, chạy hệ thống cơ sở khởi đầu và trình chấm điểm thuần Python):
+# Cốt lõi (build bản phát hành, chạy baseline starter và scorer thuần Python):
 pyarrow>=15
 huggingface_hub>=0.24
 
-# Hệ thống cơ sở chính thức + chấm điểm chính thức (giống thiết lập gốc của TEMPO/RECOR):
-#   pytrec_eval  - cài đặt chỉ số mà cả hai kho mã benchmark đều sử dụng
+# Baseline chính thức + chấm điểm chính thức (giống thiết lập upstream của TEMPO/RECOR):
+#   pytrec_eval  - cài đặt metric mà cả hai repo benchmark đều sử dụng
 #   gensim       - LuceneBM25Model (k1=0.9, b=0.4)
-#   pyserini     - bộ phân tích Lucene dùng để tách từ; cần JDK (phiên bản 21 chạy được)
+#   pyserini     - Lucene analyzer dùng để tách từ (tokenisation); cần JDK (phiên bản 21 chạy được)
 pytrec_eval>=0.5
 gensim>=4.4
 pyserini>=2.4

@@ -1,7 +1,7 @@
-"""Bộ xếp hạng BM25 (Okapi) thuần Python -- không có phụ thuộc bên ngoài.
+"""Ranker BM25 (Okapi) thuần Python -- không có dependency bên ngoài.
 
-Được dùng làm hệ thống cơ sở khởi đầu của RETECO. Giá trị mặc định (k1=0.9, b=0.4) theo
-thông lệ phổ biến của BEIR cho truy xuất zero-shot; có thể ghi đè qua CLI nếu muốn.
+Được dùng làm baseline starter của RETECO. Giá trị mặc định (k1=0.9, b=0.4) theo
+thông lệ phổ biến của BEIR cho truy xuất (retrieval) zero-shot; có thể ghi đè qua CLI nếu muốn.
 """
 import re
 from math import log
@@ -21,7 +21,7 @@ class BM25:
         self.N = len(self.docs)
         self.doc_len = [len(d) for d in self.docs]
         self.avgdl = (sum(self.doc_len) / self.N) if self.N else 0.0
-        # tần suất tài liệu + tần suất từ theo từng tài liệu
+        # document frequency + term frequency của từng tài liệu (document)
         self.tf = []
         df = {}
         for d in self.docs:

@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Trình kiểm tra định dạng bài nộp của RETECO.
+"""Format checker cho bài nộp (submission) của RETECO.
 
-Kiểm tra một tệp kết quả chạy ở định dạng TREC:
+Kiểm tra một run file ở định dạng TREC:
 
     qid   Q0   docid   rank   score   tag
 
-Các quy tắc được áp dụng (giống với trình kiểm tra mà CodaBench sẽ dùng):
+Các quy tắc được áp dụng (giống với checker mà CodaBench sẽ dùng):
   * đúng 6 cột phân tách bằng khoảng trắng trên mỗi dòng không rỗng
   * rank là số nguyên dương, score là số thực
-  * các rank trong một chủ đề là duy nhất
-  * (cảnh báo) score trong một chủ đề không tăng khi rank tăng
-  * (tùy chọn) --qrels giới hạn tập ID chủ đề hợp lệ và cảnh báo khi gặp docid không xác định
+  * các rank trong một topic là duy nhất
+  * (cảnh báo) score trong một topic không tăng khi rank tăng
+  * (tùy chọn) --qrels giới hạn tập topic id hợp lệ và cảnh báo khi gặp docid không xác định
 
 Mã thoát 0 = hợp lệ, 1 = phát hiện lỗi.
 
@@ -36,9 +36,9 @@ def load_ids(path, key):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("run")
-    ap.add_argument("--qrels", help="tùy chọn: qrels.txt để kiểm tra ID chủ đề")
-    ap.add_argument("--corpus", help="tùy chọn: documents.jsonl để kiểm tra ID tài liệu")
-    ap.add_argument("--doc-key", default="id", help="trường ID tài liệu trong kho ngữ liệu (id|doc_id)")
+    ap.add_argument("--qrels", help="tùy chọn: qrels.txt để kiểm tra topic id")
+    ap.add_argument("--corpus", help="tùy chọn: documents.jsonl để kiểm tra doc id")
+    ap.add_argument("--doc-key", default="id", help="trường doc id trong corpus (id|doc_id)")
     args = ap.parse_args()
 
     valid_topics = None

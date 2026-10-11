@@ -1,20 +1,20 @@
 #!/usr/bin/env python3
-"""Hệ thống cơ sở BM25 chính thức của RETECO -- mã gốc, chạy trên bản phát hành RETECO.
+"""Baseline BM25 chính thức của RETECO -- mã upstream, chạy trên bản phát hành RETECO.
 
-Phần truy xuất là *nguyên văn* hàm `retrieval_bm25` từ các kho mã benchmark chính thức
+Phần truy xuất (retrieval) là *nguyên văn* hàm `retrieval_bm25` từ các repo benchmark chính thức
 (github.com/tempo-bench/Tempo và github.com/RECOR-Benchmark/RECOR, vốn có các cài đặt
-giống hệt nhau đến từng byte): bộ phân tích Lucene qua pyserini, LuceneBM25Model của gensim
+giống hệt nhau đến từng byte): Lucene analyzer qua pyserini, LuceneBM25Model của gensim
 với k1=0.9 / b=0.4, cắt ở top-1000. Phần chấm điểm là hàm `calculate_retrieval_metrics`
-gốc, tức pytrec_eval với ndcg_cut/map_cut/recall/P và recip_rank.
+của upstream, tức pytrec_eval với ndcg_cut/map_cut/recall/P và recip_rank.
 
-Cách xây dựng truy vấn theo đúng bản gốc:
+Cách xây dựng truy vấn (query) theo đúng upstream:
   1a  examples['query']
   1b  f"{base_query}\n\nStep: {step_instruction}"      (Tempo/run_step.py)
-  2a  turn['query'], ID chủ đề "{conv_id}_turn_{turn_id}" (RECOR/run_retrieval.py)
+  2a  turn['query'], topic id "{conv_id}_turn_{turn_id}" (RECOR/run_retrieval.py)
 
-Kho ngữ liệu được phân tích và lập chỉ mục một lần cho mỗi lĩnh vực và dùng lại cho cả hai tập;
-đây là điểm khác biệt duy nhất so với luồng chạy theo từng lần gọi của bản gốc -- nó không thay đổi
-gì về điểm số, chỉ thay đổi thời gian chạy thực tế.
+Corpus được phân tích và lập chỉ mục (index) một lần cho mỗi lĩnh vực (domain) và dùng lại cho cả
+hai split; đây là điểm khác biệt duy nhất so với luồng chạy theo từng lần gọi của upstream -- nó không
+thay đổi gì về điểm số, chỉ thay đổi thời gian chạy thực tế.
 
 Cách dùng:
     JAVA_HOME=... JVM_PATH=... python official_baseline.py \
@@ -32,10 +32,10 @@ K_VALUES = [1, 5, 10, 25, 50, 100]
 
 
 # ---------------------------------------------------------------------------
-# Phần chấm điểm gốc (Tempo/retrievers.py :: calculate_retrieval_metrics, và bản sao
+# Phần chấm điểm của upstream (Tempo/retrievers.py :: calculate_retrieval_metrics, và bản sao
 # giống hệt đến từng byte trong RECOR/experiments/retrieval/retrievers.py), được rút gọn
-# chỉ còn các chỉ số mà RETECO báo cáo -- khối oracle-reranker là đầu ra chẩn đoán của
-# bản gốc và không thuộc bảng xếp hạng chính thức của RETECO.
+# chỉ còn các metric mà RETECO báo cáo -- khối oracle-reranker là đầu ra chẩn đoán (diagnostic)
+# của upstream và không thuộc leaderboard chính thức của RETECO.
 # ---------------------------------------------------------------------------
 def calculate_retrieval_metrics(results, qrels, k_values=K_VALUES):
     ndcg, _map, recall, precision = {}, {}, {}, {}
@@ -73,7 +73,7 @@ def calculate_retrieval_metrics(results, qrels, k_values=K_VALUES):
 
 
 # ---------------------------------------------------------------------------
-# Phần truy xuất gốc (retrieval_bm25), được tách ra để chỉ mục chỉ cần xây dựng một lần.
+# Phần truy xuất của upstream (retrieval_bm25), được tách ra để index chỉ cần xây dựng một lần.
 # ---------------------------------------------------------------------------
 class OfficialBM25:
     def __init__(self, documents, doc_ids):
@@ -148,7 +148,7 @@ def _recor_topics(domain_dir, split, append_history):
     for c in convs:
         for t in c["turns"]:
             gold = t.get("gold_doc_ids") or t.get("supporting_doc_ids") or []
-            if not gold:                       # bản gốc bỏ qua các lượt không có tài liệu chuẩn
+            if not gold:                       # upstream bỏ qua các lượt (turn) không có gold
                 continue
             parts = [t["query"]]
             if append_history:
@@ -173,7 +173,7 @@ def topics_2a_hist(domain_dir, split):
 
 
 def restrict_to_corpus(gt, corpus_ids):
-    """Dữ liệu chuẩn gốc đôi khi trỏ đến một tài liệu không có trong kho ngữ liệu; nhãn đánh giá
+    """Gold của upstream đôi khi trỏ đến một tài liệu không có trong corpus; judgment
     như vậy không thể đạt được và bị loại bỏ (cũng bị loại khỏi qrels của bản phát hành)."""
     out = {}
     for qid, docs in gt.items():
@@ -247,7 +247,7 @@ def main():
             json.dump(entry, f, indent=2)
         results[track][dom] = entry
 
-    # ---- tổng hợp: trung bình macro theo các lĩnh vực, giống như run.py của bản gốc ----
+    # ---- tổng hợp: macro-average theo các lĩnh vực, giống như run.py của upstream ----
     summary = {"per_domain": {k: dict(v) for k, v in results.items()},
                "macro_average": {}}
     for track, doms in results.items():

@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="RETECO là Nhiệm vụ 1 của SemEval-2027 về truy xuất định hướng suy luận trong các ngữ cảnh thời gian và hội thoại. Dữ liệu huấn luyện và phát triển được phát hành ngày 30/08/2026.">
+  <meta name="description" content="RETECO là SemEval-2027 Task 1 về reasoning-oriented retrieval trong các ngữ cảnh thời gian và hội thoại. Dữ liệu train/dev được phát hành ngày 30/08/2026.">
   <meta name="theme-color" content="#ffffff">
-  <meta property="og:title" content="RETECO — Nhiệm vụ 1 của SemEval-2027">
-  <meta property="og:description" content="Truy xuất định hướng suy luận theo thời gian và hội thoại. Dữ liệu huấn luyện và phát triển hiện đã có trên Hugging Face.">
+  <meta property="og:title" content="RETECO — SemEval-2027 Task 1">
+  <meta property="og:description" content="Reasoning-oriented retrieval xuyên suốt thời gian và hội thoại. Dữ liệu train/dev hiện đã có trên Hugging Face.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://datascienceuibk.github.io/RETECO/">
-  <title>RETECO — Nhiệm vụ 1 của SemEval-2027</title>
+  <title>RETECO — SemEval-2027 Task 1</title>
   <link rel="icon" href="assets/brand/reteco-mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/site.css">
   <script src="assets/js/site.js" defer></script>
@@ -20,7 +20,7 @@
     <div class="shell nav-wrap">
       <a class="brand" href="index.html" aria-label="Trang chủ RETECO"><img class="brand-mark" src="assets/brand/reteco-mark.svg" alt=""><span><span class="brand-name">RETECO</span><br><span class="brand-event">SemEval 2027</span></span></a>
       <button class="nav-toggle" type="button" aria-label="Mở menu điều hướng" aria-expanded="false"><span></span><span></span><span></span></button>
-      <nav class="nav-links" aria-label="Điều hướng chính"><a aria-current="page" href="index.html">Tổng quan</a><a href="task.html">Nhiệm vụ</a><a href="data.html">Dữ liệu</a><a href="samples.html">Dữ liệu mẫu</a><a href="evaluation.html">Đánh giá</a><a href="participate.html">Tham gia</a><a href="timeline.html">Lịch trình</a><a href="papers.html">Bài báo</a><a class="nav-cta" href="https://github.com/DataScienceUIBK/RETECO" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
+      <nav class="nav-links" aria-label="Điều hướng chính"><a aria-current="page" href="index.html">Tổng quan</a><a href="task.html">Task</a><a href="data.html">Dữ liệu</a><a href="samples.html">Dữ liệu mẫu</a><a href="evaluation.html">Đánh giá</a><a href="participate.html">Tham gia</a><a href="timeline.html">Lịch trình</a><a href="papers.html">Bài báo</a><a class="nav-cta" href="https://github.com/DataScienceUIBK/RETECO" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
     </div>
   </header>
 
@@ -29,12 +29,12 @@
   <main id="main" class="academic-home">
     <header class="academic-intro">
       <div class="shell academic-intro-inner">
-        <p class="task-kicker">SemEval-2027 · Nhiệm vụ 1</p>
-        <h1>RETECO: Truy xuất định hướng suy luận</h1>
-        <p class="academic-summary">Một nhiệm vụ chung về truy xuất có căn cứ thời gian và
-        truy xuất hội thoại đòi hỏi suy luận chuyên sâu.</p>
-        <p class="status-note"><strong>Trạng thái:</strong> Đã được chấp nhận là một nhiệm vụ chung của SemEval-2027.
-        Dữ liệu huấn luyện và phát triển đã được phát hành ngày 30/08/2026.</p>
+        <p class="task-kicker">SemEval-2027 · Task 1</p>
+        <h1>RETECO: Reasoning-Oriented Retrieval</h1>
+        <p class="academic-summary">Một shared task về truy xuất có căn cứ thời gian (temporally grounded retrieval) và
+        truy xuất hội thoại đòi hỏi suy luận chuyên sâu (reasoning-intensive conversational retrieval).</p>
+        <p class="status-note"><strong>Trạng thái:</strong> Đã được chấp nhận là một shared task của SemEval-2027.
+        Dữ liệu huấn luyện và phát triển (train/dev) đã được phát hành ngày 30/08/2026.</p>
 
         <section class="intro-organizers" aria-labelledby="intro-organizers-title">
           <h2 id="intro-organizers-title">Ban tổ chức</h2>
@@ -56,22 +56,22 @@
           <h2>Tin tức</h2>
           <dl class="news-list news-list--animated">
             <dt><svg class="news-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></svg><time datetime="2026-09-25">25/09/2026</time><span class="news-tag">Mới</span></dt>
-            <dd><strong>Dữ liệu v1.1: đã loại bỏ tài liệu trùng lặp khỏi Hạng mục 1.</strong> Nhiều tài liệu
-              của Hạng mục 1 xuất hiện nhiều lần dưới các ID khác nhau (lên tới một nửa kho ngữ liệu Bitcoin), đây là
-              vấn đề kế thừa từ các kho ngữ liệu TEMPO gốc và đã được một người tham gia báo cáo. Phiên bản 1.1 trên
-              <a href="https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027">Hugging Face</a> chỉ giữ một bản cho mỗi văn bản, giảm Hạng mục 1 từ
-              1,654,055 xuống 1,167,159 tài liệu. Mọi nhãn chuẩn đều được giữ nguyên; truy vấn, cách chia tập và Hạng mục 2
-              không thay đổi. Vui lòng tải lại dữ liệu và xây dựng lại chỉ mục của bạn.
+            <dd><strong>Dữ liệu v1.1: đã loại bỏ tài liệu trùng lặp khỏi Track 1.</strong> Nhiều tài liệu (document)
+              của Track 1 xuất hiện nhiều lần dưới các ID khác nhau (lên tới một nửa corpus Bitcoin), đây là
+              vấn đề kế thừa từ các corpus upstream của TEMPO và đã được một người tham gia báo cáo. Phiên bản 1.1 trên
+              <a href="https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027">Hugging Face</a> chỉ giữ một bản cho mỗi văn bản, giảm Track 1 từ
+              1,654,055 xuống 1,167,159 tài liệu. Mọi gold label đều được giữ nguyên; truy vấn (query), các split và Track 2
+              không thay đổi. Vui lòng tải lại dữ liệu và xây dựng lại chỉ mục (index) của bạn.
               <a href="data.html#versions">Những gì đã thay đổi</a>.</dd>
             <dt><svg class="news-icon" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7.5" ry="3"/><path d="M4.5 6v6c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3V6"/><path d="M4.5 12v6c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3v-6"/></svg><time datetime="2026-08-30">30/08/2026</time></dt>
-            <dd>Dữ liệu huấn luyện và phát triển đã được phát hành trên
-              <a href="https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027">Hugging Face</a>: 24 lĩnh vực và 2,161,196 tài liệu, được chia
-              theo tỷ lệ 70/30 thành tập huấn luyện và tập phát triển, kèm nhãn đánh giá liên quan cho cả hai tập.
-              <a href="https://github.com/DataScienceUIBK/RETECO/tree/main/starter_kit">Bộ công cụ khởi đầu</a> — gồm hệ thống cơ sở BM25, trình chấm điểm chính thức và
-              trình kiểm tra định dạng bài nộp — được phát hành cùng lúc.</dd>
+            <dd>Dữ liệu train/dev đã được phát hành trên
+              <a href="https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027">Hugging Face</a>: 24 lĩnh vực (domain) và 2,161,196 tài liệu, được chia
+              theo tỷ lệ 70/30 thành tập train và tập dev, kèm nhãn mức độ liên quan (relevance judgment) cho cả hai tập.
+              <a href="https://github.com/DataScienceUIBK/RETECO/tree/main/starter_kit">Starter kit</a> — gồm baseline BM25, scorer chính thức và
+              format checker cho bài nộp — được phát hành cùng lúc.</dd>
             <dt><svg class="news-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12.3 2.6 2.6L16 9.5"/></svg><time datetime="2026-08-11">11/08/2026</time></dt>
-            <dd>RETECO được chấp nhận là Nhiệm vụ 1 của SemEval-2027. Xem
-              <a href="https://semeval.github.io/SemEval2027/">danh sách nhiệm vụ SemEval-2027</a>.</dd>
+            <dd>RETECO được chấp nhận là SemEval-2027 Task 1. Xem
+              <a href="https://semeval.github.io/SemEval2027/">danh sách task của SemEval-2027</a>.</dd>
             <dt><svg class="news-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg><time datetime="2026-08-08">08/08/2026</time></dt>
             <dd>Đã công bố dữ liệu mẫu: một gói nhỏ, đã được con người kiểm tra, minh họa mọi định dạng
               bản ghi và bài nộp. <a href="samples.html">Xem các mẫu</a>.</dd>
@@ -80,71 +80,71 @@
 
         <section id="overview">
           <h2>Tổng quan</h2>
-          <p>Các hệ thống truy xuất thường được đánh giá theo mức độ liên quan về chủ đề. Thay vào đó, RETECO
-          giải quyết những trường hợp mà hệ thống phải suy luận về <strong>thời điểm thông tin còn hiệu lực</strong>,
+          <p>Các hệ thống truy xuất thường được đánh giá theo mức độ liên quan (relevance) về chủ đề. Thay vào đó, RETECO
+          giải quyết những trường hợp mà hệ thống phải suy luận (reasoning) về <strong>thời điểm thông tin còn hiệu lực</strong>,
           <strong>cách các sự kiện hoặc dữ kiện thay đổi theo thời gian</strong>, và <strong>những gì đã được
           xác lập trong một cuộc hội thoại</strong>.</p>
-          <p>Nhiệm vụ gồm hai hạng mục và năm hạng mục con, được xây dựng dựa trên các bộ đánh giá chuẩn (benchmark) TEMPO và RECOR.
-          Người tham gia có thể đăng ký một hạng mục con duy nhất hoặc làm việc trên cả truy xuất lẫn
-          sinh văn bản có căn cứ. Định nghĩa đầy đủ, bao gồm đầu vào và đầu ra bắt buộc cho từng
-          hạng mục con, được trình bày trên <a href="task.html">trang nhiệm vụ</a>.</p>
+          <p>Task gồm hai track và năm sub-track, được xây dựng dựa trên các benchmark TEMPO và RECOR.
+          Người tham gia có thể chỉ tham gia một sub-track hoặc làm cả truy xuất lẫn
+          sinh văn bản có căn cứ (grounded generation). Định nghĩa đầy đủ, bao gồm đầu vào và đầu ra bắt buộc của từng
+          sub-track, được trình bày trên <a href="task.html">trang task</a>.</p>
         </section>
 
         <section id="data">
           <h2>Dữ liệu</h2>
-          <p>Dữ liệu huấn luyện và phát triển có sẵn trên
+          <p>Dữ liệu train/dev có sẵn trên
           <a href="https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027">Hugging Face</a> trong một lần tải duy nhất. Dữ liệu gồm 24 lĩnh vực và
-          1,674,300 tài liệu (phiên bản 1.1), mỗi lĩnh vực đi kèm kho ngữ liệu truy xuất đầy đủ của riêng nó, nên không
+          1,674,300 tài liệu (phiên bản 1.1), mỗi lĩnh vực đi kèm corpus truy xuất đầy đủ của riêng nó, nên không
           cần thêm tài nguyên nào khác.</p>
-          <p>Mỗi lĩnh vực được chia theo tỷ lệ 70/30 thành tập huấn luyện và tập phát triển với một seed ngẫu nhiên
-          cố định đã được công bố, và nhãn đánh giá liên quan được phát hành cho cả hai tập. Bản thân kho ngữ liệu truy xuất
-          không bị chia: hệ thống tìm kiếm trên toàn bộ kho ngữ liệu của một lĩnh vực ở cả hai tập.</p>
+          <p>Mỗi lĩnh vực được chia theo tỷ lệ 70/30 thành tập train và tập dev với một seed
+          cố định đã được công bố, và nhãn mức độ liên quan được phát hành cho cả hai tập. Bản thân corpus truy xuất
+          không bị chia: hệ thống tìm kiếm trên toàn bộ corpus của một lĩnh vực ở cả hai split.</p>
           <div class="data-table-wrap"><table class="data-table">
-            <thead><tr><th>Mục</th><th>Huấn luyện</th><th>Phát triển</th></tr></thead>
+            <thead><tr><th>Mục</th><th>Train</th><th>Dev</th></tr></thead>
             <tbody>
-              <tr><td>Truy vấn Hạng mục 1</td><td>1,211</td><td>519</td></tr>
-              <tr><td>Bước phân rã Hạng mục 1</td><td>2,762</td><td>1,214</td></tr>
-              <tr><td>Hội thoại Hạng mục 2</td><td>496</td><td>211</td></tr>
-              <tr><td>Lượt mục tiêu Hạng mục 2</td><td>2,113</td><td>858</td></tr>
+              <tr><td>Truy vấn của Track 1</td><td>1,211</td><td>519</td></tr>
+              <tr><td>Bước phân rã (decomposed step) của Track 1</td><td>2,762</td><td>1,214</td></tr>
+              <tr><td>Hội thoại của Track 2</td><td>496</td><td>211</td></tr>
+              <tr><td>Lượt mục tiêu (target turn) của Track 2</td><td>2,113</td><td>858</td></tr>
             </tbody></table></div>
-          <p>Tập đánh giá là riêng biệt, được gán nhãn mới và được phát hành không kèm nhãn đánh giá trong
-          khung thời gian đánh giá. Thống kê kho ngữ liệu, định dạng bản ghi và giấy phép được mô tả trên
+          <p>Tập đánh giá là riêng biệt, được gán nhãn mới và được phát hành không kèm nhãn trong
+          khung thời gian đánh giá (evaluation window). Thống kê corpus, định dạng bản ghi và giấy phép được mô tả trên
           <a href="data.html">trang dữ liệu</a>; ví dụ minh họa cho mọi loại bản ghi có trên
           <a href="samples.html">trang dữ liệu mẫu</a>.</p>
         </section>
 
         <section id="evaluation">
           <h2>Đánh giá</h2>
-          <p><strong>nDCG@10</strong>, được tính bằng <code>pytrec_eval</code> và lấy trung bình macro, là
-          chỉ số truy xuất chính thức cho các Hạng mục con 1a, 1b, 2a và 2c. Chất lượng sinh văn bản của
-          các Hạng mục con 2b và 2c được báo cáo song song với kết quả truy xuất thay vì gộp chung với
-          kết quả đó. Độ bao phủ thời gian, độ chính xác thời gian, độ sâu lượt hội thoại và kết quả theo
-          từng lĩnh vực được báo cáo dưới dạng chỉ số chẩn đoán. Toàn bộ quy trình được trình bày trong
+          <p><strong>nDCG@10</strong>, được tính bằng <code>pytrec_eval</code> và lấy trung bình macro (macro-average), là
+          metric truy xuất chính thức cho các Sub-track 1a, 1b, 2a và 2c. Chất lượng sinh văn bản của
+          các Sub-track 2b và 2c được báo cáo song song với kết quả truy xuất thay vì gộp chung với
+          kết quả đó. Độ bao phủ thời gian (temporal coverage), độ chính xác thời gian (temporal precision), độ sâu lượt hội thoại (turn depth) và kết quả theo
+          từng lĩnh vực được báo cáo dưới dạng chỉ số chẩn đoán (diagnostics). Toàn bộ quy trình được trình bày trong
           <a href="evaluation.html">kế hoạch đánh giá</a>.</p>
-          <p>Hệ thống cơ sở BM25 tham chiếu, trình chấm điểm chính thức và trình kiểm tra định dạng bài nộp được
-          cung cấp trong <a href="https://github.com/DataScienceUIBK/RETECO/tree/main/starter_kit">bộ công cụ khởi đầu</a>. Kết quả tham chiếu cho cả hai tập được
+          <p>Baseline BM25 tham chiếu, scorer chính thức và format checker cho bài nộp được
+          cung cấp trong <a href="https://github.com/DataScienceUIBK/RETECO/tree/main/starter_kit">starter kit</a>. Kết quả tham chiếu cho cả hai split được
           báo cáo trên <a href="data.html#baselines">trang dữ liệu</a>.</p>
         </section>
 
         <section id="participation">
           <h2>Tham gia</h2>
           <p>Các thông báo được gửi qua
-          <a href="https://groups.google.com/g/semeval-2027-reteco">danh sách thư của nhiệm vụ</a>.
+          <a href="https://groups.google.com/g/semeval-2027-reteco">mailing list của task</a>.
           Thông tin đăng ký, nền tảng đánh giá và giới hạn nộp bài sẽ được thông báo tại đó và trên
           trang web này khi được xác nhận. <a href="participate.html">Hướng dẫn tham gia</a> mô tả
-          cách lấy dữ liệu, phát triển trên tập huấn luyện, chấm điểm các kết quả chạy cục bộ bằng
-          chỉ số chính thức, và nộp bài.</p>
+          cách lấy dữ liệu, phát triển trên split train, chấm điểm các run cục bộ bằng
+          metric chính thức, và nộp bài.</p>
         </section>
 
         <section id="citation">
           <h2>Bài báo và đề xuất</h2>
-          <p>RETECO được xây dựng dựa trên các bộ đánh giá chuẩn TEMPO và RECOR. Đề xuất nhiệm vụ đã được chấp nhận, liên kết
+          <p>RETECO được xây dựng dựa trên các benchmark TEMPO và RECOR. Đề xuất task (task proposal) đã được chấp nhận, liên kết
           đến các bài báo và bản ghi BibTeX có trên
           <a href="papers.html">trang bài báo và trích dẫn</a>.</p>
         </section>
       </article>
 
-      <aside class="academic-sidebar" aria-label="Thông tin nhiệm vụ">
+      <aside class="academic-sidebar" aria-label="Thông tin về task">
         <section>
           <h2>Các mốc thời gian quan trọng</h2>
           <dl class="date-list">
@@ -162,16 +162,16 @@
           <h2>Tài nguyên</h2>
           <ul class="sidebar-links">
             <li><a href="https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027"><svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="m7.5 10.5 4.5 4.5 4.5-4.5"/><path d="M4 20h16"/></svg>Dữ liệu huấn luyện và phát triển</a></li>
-            <li><a href="https://github.com/DataScienceUIBK/RETECO/tree/main/starter_kit"><svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 8-5 4 5 4"/><path d="m15 8 5 4-5 4"/></svg>Bộ công cụ khởi đầu và hệ thống cơ sở</a></li>
+            <li><a href="https://github.com/DataScienceUIBK/RETECO/tree/main/starter_kit"><svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 8-5 4 5 4"/><path d="m15 8 5 4-5 4"/></svg>Starter kit và baseline</a></li>
             <li><a href="samples.html"><svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>Dữ liệu mẫu</a></li>
-            <li><a href="assets/papers/RETECO_SemEval_2027_Proposal.pdf"><svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h4"/></svg>Đề xuất nhiệm vụ (PDF)</a></li>
-            <li><a href="https://github.com/DataScienceUIBK/RETECO"><svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.4-4-2.2-6-2.7m12 4.7v-3.6a3.1 3.1 0 0 0-.9-2.4c2.9-.3 6-1.4 6-6.5a5 5 0 0 0-1.4-3.5 4.7 4.7 0 0 0-.1-3.5s-1.1-.3-3.6 1.4a12.4 12.4 0 0 0-6.6 0C6.4 1.7 5.3 2 5.3 2a4.7 4.7 0 0 0-.1 3.5A5 5 0 0 0 3.8 9c0 5 3.1 6.2 6 6.5a3.1 3.1 0 0 0-.9 2.4V21"/></svg>Kho mã GitHub</a></li>
+            <li><a href="assets/papers/RETECO_SemEval_2027_Proposal.pdf"><svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h4"/></svg>Đề xuất task (PDF)</a></li>
+            <li><a href="https://github.com/DataScienceUIBK/RETECO"><svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.4-4-2.2-6-2.7m12 4.7v-3.6a3.1 3.1 0 0 0-.9-2.4c2.9-.3 6-1.4 6-6.5a5 5 0 0 0-1.4-3.5 4.7 4.7 0 0 0-.1-3.5s-1.1-.3-3.6 1.4a12.4 12.4 0 0 0-6.6 0C6.4 1.7 5.3 2 5.3 2a4.7 4.7 0 0 0-.1 3.5A5 5 0 0 0 3.8 9c0 5 3.1 6.2 6 6.5a3.1 3.1 0 0 0-.9 2.4V21"/></svg>Repository trên GitHub</a></li>
           </ul>
         </section>
 
         <section>
           <h2>Liên hệ</h2>
-          <p>Danh sách thư của nhiệm vụ:
+          <p>Mailing list của task:
           <a href="https://groups.google.com/g/semeval-2027-reteco">semeval-2027-reteco</a>.
           Thư liên hệ:
           <a href="mailto:abdelrahman.abdallah@uibk.ac.at">abdelrahman.abdallah@uibk.ac.at</a>.</p>
@@ -180,6 +180,6 @@
     </div>
   </main>
 
-  <footer class="site-footer"><div class="shell"><div class="footer-grid"><div class="footer-brand"><a class="brand" href="index.html"><img class="brand-mark" src="assets/brand/reteco-mark.svg" alt=""><span class="brand-name">RETECO</span></a><p>Một nhiệm vụ chung của SemEval-2027 nhằm thúc đẩy truy xuất định hướng suy luận trong các ngữ cảnh thời gian và hội thoại.</p></div><div class="footer-col"><strong>Nhiệm vụ</strong><a href="task.html">Hạng mục &amp; hạng mục con</a><a href="evaluation.html">Đánh giá</a><a href="timeline.html">Lịch trình</a></div><div class="footer-col"><strong>Dữ liệu</strong><a href="data.html">Kho ngữ liệu &amp; định dạng</a><a href="samples.html">Ví dụ minh họa</a><a href="https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027">Tải xuống ↗</a></div><div class="footer-col"><strong>Tham gia</strong><a href="participate.html">Hướng dẫn tham gia</a><a href="participate.html#faq">Câu hỏi thường gặp</a><a href="https://github.com/DataScienceUIBK/RETECO/tree/main/starter_kit">Bộ công cụ khởi đầu ↗</a><a href="papers.html">Bài báo &amp; trích dẫn</a></div></div><div class="footer-bottom"><span>© <span data-year>2026</span> Ban tổ chức RETECO.</span><span>Lưu trữ bởi DataScienceUIBK · Đại học Innsbruck</span></div></div></footer>
+  <footer class="site-footer"><div class="shell"><div class="footer-grid"><div class="footer-brand"><a class="brand" href="index.html"><img class="brand-mark" src="assets/brand/reteco-mark.svg" alt=""><span class="brand-name">RETECO</span></a><p>Một shared task của SemEval-2027 nhằm thúc đẩy reasoning-oriented retrieval trong các ngữ cảnh thời gian và hội thoại.</p></div><div class="footer-col"><strong>Task</strong><a href="task.html">Track &amp; sub-track</a><a href="evaluation.html">Đánh giá</a><a href="timeline.html">Lịch trình</a></div><div class="footer-col"><strong>Dữ liệu</strong><a href="data.html">Corpus &amp; định dạng</a><a href="samples.html">Ví dụ minh họa</a><a href="https://huggingface.co/datasets/DataScience-UIBK/RETECO-SemEval2027">Tải xuống ↗</a></div><div class="footer-col"><strong>Tham gia</strong><a href="participate.html">Hướng dẫn tham gia</a><a href="participate.html#faq">Câu hỏi thường gặp</a><a href="https://github.com/DataScienceUIBK/RETECO/tree/main/starter_kit">Starter kit ↗</a><a href="papers.html">Bài báo &amp; trích dẫn</a></div></div><div class="footer-bottom"><span>© <span data-year>2026</span> Ban tổ chức RETECO.</span><span>Lưu trữ bởi DataScienceUIBK · Đại học Innsbruck</span></div></div></footer>
 </body>
 </html>

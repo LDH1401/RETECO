@@ -7,9 +7,9 @@ Người tham gia, ban tổ chức và người đóng góp được kỳ vọng
 - chào đón người tham gia bất kể xuất thân, bản dạng, cơ quan/tổ chức hay
   trình độ kinh nghiệm;
 - phê bình hệ thống và ý tưởng thay vì con người;
-- bảo vệ dữ liệu riêng tư của nhiệm vụ và thông tin của người tham gia;
+- bảo vệ dữ liệu riêng tư của task và thông tin của người tham gia;
 - tránh quấy rối, đe dọa, ngôn ngữ phân biệt đối xử và công kích cá nhân;
-- báo cáo xung đột lợi ích và các vấn đề nghi ngờ về tính toàn vẹn của bộ đánh giá chuẩn.
+- báo cáo xung đột lợi ích và các vấn đề nghi ngờ về tính toàn vẹn của benchmark.
 
 Hành vi không thể chấp nhận có thể được báo cáo riêng cho người tổ chức chính qua địa chỉ
 `abdelrahman.abdallah@uibk.ac.at`. Ban tổ chức có thể gỡ bỏ nội dung, hạn chế quyền
